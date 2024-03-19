@@ -9,7 +9,12 @@ import com.example.myapplication.ui.adapters.viewholders.BaseViewHolder;
 import java.util.List;
 
 public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+    public void setAdapterViewType(ViewType viewType) {
+    }
 
+    public enum ViewType {
+        LIST, GRID
+    }
     final List<BaseRecyclerViewItem> m_vItems;
 
     public BaseRecyclerViewAdapter(List<BaseRecyclerViewItem> items)
