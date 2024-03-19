@@ -51,6 +51,14 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // Định nghĩa biến Lifecycle_version với phiên bản mong muốn
+    ext {
+        Lifecycle_version = "2.4.0" // Thay phiên bản bằng phiên bản bạn muốn sử dụng
+    }
+
+// Sử dụng biến Lifecycle_version trong phụ thuộc
+    implementation "androidx.lifecycle:lifecycle-common-java8:$Lifecycle_version"
+
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"

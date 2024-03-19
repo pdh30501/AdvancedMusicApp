@@ -1,15 +1,79 @@
 package com.example.mediaplayer;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.MediaDescription;
 import android.media.MediaMetadata;
+import android.provider.MediaStore;
 
 import com.example.mediaplayer.model.Song;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
+
 public class LibraryManager {
+    private final static  String[] CURSOR_PROJECTION = new String[]
+            {"_id", "artist", "album", "title", "duration", "_display_name","_data", "_size"};
+    public static List<Song> getSongs(Context context)
+    {
+        Cursor cursor = context.getContentResolver().query(
+                MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                CURSOR_PROJECTION,
+                "is_music != 0",
+                null,
+                "_display_name ASC");
+        List<Song> result = new ArrayList<>();
+        long startTine = System.currentTimeMillis();
 
+        if(cursor != null && cursor.getCount() > 0)
+        {
+            while (cursor.moveToNext())
+            {
+                int id = Integer.parseInt(getCursorStringByIndex(cursor, "_id"));
+                String artistName = getCursorStringByIndex(cursor, "artist");
+                String albumName = getCursorStringByIndex(cursor, "album");
+                String title = getCursorStringByIndex(cursor, "title");
+                String displayName = getCursorStringByIndex(cursor, "_display_name");
+                String data = getCursorStringByIndex(cursor, "_data");
+                long duration = getCursorLongByIndex(cursor, "duration");
 
+                if(artistName == null || artistName.isEmpty())
+                    artistName = "<unknow>";
+
+                if(displayName.contains("AUD-") && !title.isEmpty())
+                    displayName = title;
+
+                result.add(new Song(
+                    id,
+                    title,
+                    duration,
+                    data,
+                    albumName,
+                    artistName,
+                    displayName ));
+
+            }
+        }
+
+        if (cursor != null)
+            cursor.close();
+
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTine; //this was just to determine how fast the songs are gathered from the device
+
+        return  result;
+    }
+    public static TreeMap<Integer, Song> getTreemapOfSongs(List<Song> songs)
+    {
+        TreeMap<Integer, Song> result = new TreeMap<>();
+        for (Song song : songs)
+        {
+            result.put((int)song.getId(), song);
+        }
+        return result;
+    }
     public static MediaDescription getMediaDescription (Song song) {
         if (song==null){
             return null;
