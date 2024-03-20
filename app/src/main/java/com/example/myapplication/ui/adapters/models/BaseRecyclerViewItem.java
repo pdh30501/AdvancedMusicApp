@@ -23,4 +23,6 @@ public abstract class BaseRecyclerViewItem {
         return this.m_vItemType;
     }
 
+    public abstract int getHashCode();
+
 }

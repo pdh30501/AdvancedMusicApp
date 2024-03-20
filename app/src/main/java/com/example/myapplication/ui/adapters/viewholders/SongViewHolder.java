@@ -45,6 +45,8 @@ public class SongViewHolder extends BaseViewHolder{
     public void onInitializeView(BaseRecyclerViewAdapter.ViewType viewType) {
         switch (viewType){
             case GRID:
+                this.m_vRootView.setOrientation(LinearLayout.VERTICAL);
+                this.m_vImageView_Parent.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 break;
             case LIST:
                 this.m_vRootView.setOrientation(LinearLayout.HORIZONTAL);

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.extensions.gridlayout.GridLayoutManagerExtended;
 import com.example.mediaplayer.LibraryManager;
 import com.example.mediaplayer.model.Song;
 import com.example.myapplication.R;
@@ -20,6 +21,7 @@ import com.example.myapplication.ui.adapters.BaseRecyclerViewAdapter;
 import com.example.myapplication.ui.adapters.LibraryRecyclerViewAdapter;
 import com.example.myapplication.ui.adapters.models.BaseRecyclerViewItem;
 import com.example.myapplication.ui.adapters.models.SongRecyclerViewItem;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,7 @@ public class FragmentLibrary extends Fragment {
 
     private RecyclerView m_vLibraryRecyclerView;
     private BaseRecyclerViewAdapter m_vLibraryAdapter;
-    private GridLayoutManager m_vGridLayout;
+    private GridLayoutManagerExtended m_vGridLayout;
 
 
     @Nullable
@@ -59,17 +61,26 @@ public class FragmentLibrary extends Fragment {
         }
 
         LibraryRecyclerViewAdapter adapter = new LibraryRecyclerViewAdapter(items);
+
         this.m_vLibraryAdapter = new LibraryRecyclerViewAdapter(items);
-        setAdapterViewType(BaseRecyclerViewAdapter.ViewType.LIST);
-        this.m_vLibraryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        this.m_vLibraryRecyclerView.setAdapter(adapter);
+        this.m_vLibraryAdapter.setHasStableIds(true);
+        setAdapterViewType(BaseRecyclerViewAdapter.ViewType.GRID);
+//        this.m_vLibraryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        this.m_vLibraryRecyclerView.setAdapter(this.m_vLibraryAdapter);
+
+        FloatingActionButton btn = findViewById(R.id.btn_test_layout);
+        btn.setOnClickListener(v -> {
+            setAdapterViewType((
+                    this.m_vLibraryAdapter.getViewType() == BaseRecyclerViewAdapter.ViewType.GRID) ?
+                    BaseRecyclerViewAdapter.ViewType.LIST : BaseRecyclerViewAdapter.ViewType.GRID);
+        });
     }
     private void setAdapterViewType(BaseRecyclerViewAdapter.ViewType viewType) {
         this.m_vLibraryAdapter.setAdapterViewType(viewType);
         int rowCount = (viewType == BaseRecyclerViewAdapter.ViewType.LIST) ? 1 : 3;
 
         if(m_vGridLayout == null) {
-            this.m_vGridLayout = new GridLayoutManager(getContext(), rowCount);
+            this.m_vGridLayout = new GridLayoutManagerExtended(getContext(), rowCount);
             this.m_vLibraryRecyclerView.setLayoutManager(this.m_vGridLayout);
         }
         else {

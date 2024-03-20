@@ -18,4 +18,12 @@ public class SongRecyclerViewItem extends  BaseRecyclerViewItem{
         return this.m_vItem.getData();
     }
 
+    @Override
+    public int getHashCode() {
+        int result = String.valueOf(this.m_vItem.getId()).hashCode();
+        result = 31 * result * this.m_vItem.getTile().hashCode();
+        result = 31 * result * this.m_vItem.getData().hashCode();
+
+        return result;
+    }
 }
