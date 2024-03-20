@@ -1,0 +1,39 @@
+package com.example.mediaplayer.services;
+
+import android.media.session.MediaSession;
+
+public class MediaSessionListener extends MediaSession.Callback {
+
+    private final MediaPlayerService m_vService;
+
+    public MediaSessionListener(MediaPlayerService service) {
+        this.m_vService = service;
+    }
+
+    @Override
+    public void onPlay() {
+        this.m_vService.onPlay();
+    }
+
+
+    @Override
+    public void onPause() {
+        this.m_vService.onPlayPause();
+    }
+    @Override
+    public void onSkipToNext() {
+        this.m_vService.onPlayNext();
+    }
+    @Override
+    public void onSkipToPrevious() {
+        this.m_vService.onPlayPrev();
+    }
+    @Override
+    public void onSeekTo(long pos) {
+        this.m_vService.setSeekBarPosition((int)pos);
+    }
+    @Override
+    public void onStop() {
+        this.m_vService.stopSelf();
+    }
+}

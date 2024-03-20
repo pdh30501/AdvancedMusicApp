@@ -12,7 +12,17 @@ import androidx.fragment.app.Fragment;
 import com.example.myapplication.R;
 
 public class FragmentSettings extends Fragment {
+    private String mArgument;
 
+    // Constructor nhận tham số là một String
+    public FragmentSettings(String argument) {
+        this.mArgument = argument;
+    }
+
+    // Constructor mặc định
+    public FragmentSettings() {
+        // Thực hiện công việc khởi tạo khi không có tham số
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -9,7 +9,15 @@ import com.example.myapplication.ui.adapters.viewholders.BaseViewHolder;
 import java.util.List;
 
 public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+    private ViewType m_vLayoutViewType;
 
+
+    public enum ViewType {
+        LIST, GRID
+    }
+    public void setAdapterViewType(ViewType viewType) {
+        this.m_vLayoutViewType = viewType;
+    }
     final List<BaseRecyclerViewItem> m_vItems;
 
     public BaseRecyclerViewAdapter(List<BaseRecyclerViewItem> items)
@@ -28,8 +36,17 @@ public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseV
     }
 
     @Override
+    public long getItemId(int position) {
+        return this.m_vItems.get(position).getHashCode();
+    }
+
+    @Override
     public int getItemViewType(int position) {
         return this.m_vItems.get(position).getItemType().ordinal();
+    }
+    public ViewType getViewType() {
+        return this.m_vLayoutViewType;
+
     }
 }
 
