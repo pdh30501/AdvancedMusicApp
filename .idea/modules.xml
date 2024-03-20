@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/My_Application.iml" filepath="$PROJECT_DIR$/.idea/modules/My_Application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/My_Application.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/My_Application.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/My_Application.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/My_Application.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/My_Application.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/My_Application.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/My_Application.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/My_Application.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/My_Application.lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/My_Application.lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/extensions/My_Application.lib.extensions.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/extensions/My_Application.lib.extensions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/extensions/My_Application.lib.extensions.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/extensions/My_Application.lib.extensions.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/extensions/My_Application.lib.extensions.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/extensions/My_Application.lib.extensions.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/extensions/My_Application.lib.extensions.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/extensions/My_Application.lib.extensions.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/icons_pack/My_Application.lib.icons_pack.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/icons_pack/My_Application.lib.icons_pack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/icons_pack/My_Application.lib.icons_pack.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/icons_pack/My_Application.lib.icons_pack.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/icons_pack/My_Application.lib.icons_pack.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/icons_pack/My_Application.lib.icons_pack.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/icons_pack/My_Application.lib.icons_pack.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/icons_pack/My_Application.lib.icons_pack.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/mediaplayer/My_Application.lib.mediaplayer.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/mediaplayer/My_Application.lib.mediaplayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/mediaplayer/My_Application.lib.mediaplayer.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/mediaplayer/My_Application.lib.mediaplayer.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/mediaplayer/My_Application.lib.mediaplayer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/mediaplayer/My_Application.lib.mediaplayer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/mediaplayer/My_Application.lib.mediaplayer.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/mediaplayer/My_Application.lib.mediaplayer.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/utils/My_Application.lib.utils.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/utils/My_Application.lib.utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/utils/My_Application.lib.utils.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/utils/My_Application.lib.utils.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/utils/My_Application.lib.utils.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/utils/My_Application.lib.utils.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/utils/My_Application.lib.utils.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/utils/My_Application.lib.utils.unitTest.iml" />
+    </modules>
+  </component>
+</project>
