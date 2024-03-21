@@ -1,162 +1,158 @@
 [
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\layout_layout_root_mediaplayer.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\layout\\layout_root_mediaplayer.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_more_vert_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/more_vert_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_repeat_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\repeat_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_skip_previous_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/skip_previous_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_favorite_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\favorite_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable-v24/ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\ic_launcher_background.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/layout_item_library_song_view.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/layout/item_library_song_view.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\layout_layout_media_player_view.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\layout\\layout_media_player_view.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_skip_next_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\skip_next_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_album_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/album_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-xhdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-mdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\xml\\backup_rules.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_settings_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/settings_24px.xml"
     },
     {
         "merged": "com.example.myapplication.app-merged_res-51:/layout_fragment_library.xml.flat",
         "source": "com.example.myapplication.app-main-53:/layout/fragment_library.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_home_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/home_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\xml\\data_extraction_rules.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-51:/layout_layout_root_navigation_bar.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/layout/layout_root_navigation_bar.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-merged_res-51:/layout_layout_media_player_bar.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/layout/layout_media_player_bar.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\layout_item_song_layout_sample.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\layout\\item_song_layout_sample.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_repeat_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/repeat_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_skip_previous_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\skip_previous_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/layout_fragment_settings.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/layout/fragment_settings.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\layout_fragment_settings.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\layout\\fragment_settings.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_home_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\home_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/menu_navigation_bar_tabs.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/menu/navigation_bar_tabs.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\layout_fragment_library.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\layout\\fragment_library.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/layout_fragment_home.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/layout/fragment_home.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\menu_navigation_bar_tabs.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\menu\\navigation_bar_tabs.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_skip_next_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/skip_next_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\layout_layout_root_navigation_bar.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\layout\\layout_root_navigation_bar.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_play_arrow_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/play_arrow_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_album_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\album_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_play_arrow_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\play_arrow_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/layout_layout_root_mediaplayer.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/layout/layout_root_mediaplayer.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\layout_item_library_song_view.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\layout\\item_library_song_view.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_favorite_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/favorite_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-51:/xml_backup_rules.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/xml/backup_rules.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_shuffle_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\shuffle_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_arrow_back_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/arrow_back_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\layout_fragment_home.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\layout\\fragment_home.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_shuffle_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/shuffle_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_library_music_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\library_music_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_library_music_24px.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/library_music_24px.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "com.example.myapplication.app-merged_res-51:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_settings_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\settings_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/layout_layout_media_player_view.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/layout/layout_media_player_view.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_arrow_back_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\arrow_back_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\layout\\activity_main.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable-v24\\ic_launcher_foreground.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\drawable_more_vert_24px.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\drawable\\more_vert_24px.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-merged_res-51:\\layout_layout_media_player_bar.xml.flat",
-        "source": "C:\\Users\\OS\\.gradle\\daemon\\8.2\\com.example.myapplication.app-main-53:\\layout\\layout_media_player_bar.xml"
+        "merged": "com.example.myapplication.app-merged_res-51:/layout_item_song_layout_sample.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/layout/item_song_layout_sample.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-merged_res-51:/layout_activity_main.xml.flat",
+        "source": "com.example.myapplication.app-main-53:/layout/activity_main.xml"
     }
 ]

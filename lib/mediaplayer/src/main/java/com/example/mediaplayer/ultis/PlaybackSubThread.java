@@ -1,5 +1,9 @@
 package com.example.mediaplayer.ultis;
 
+import android.annotation.SuppressLint;
+import android.media.session.PlaybackState;
+import android.os.SystemClock;
+
 import com.example.mediaplayer.PlaybackManager;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -7,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class PlaybackSubThread implements Runnable {
 
     private AtomicBoolean isRunning=new AtomicBoolean(false);
-    private AtomicBoolean inStopped=new AtomicBoolean(false);
+    private AtomicBoolean isStopped=new AtomicBoolean(false);
     private final int m_vInterval;
     private final Thread m_vWorker;
     private final PlaybackManager m_vPlaybackManager;
@@ -23,10 +27,28 @@ public class PlaybackSubThread implements Runnable {
     @Override
     public void run(){
         this.isRunning.set(true);
-        this.inStopped.set(false);
+        this.isStopped.set(false);
 
         while (isRunning()){
-            //dO SOMTHING UI UPDATE actually Motifivation updates
+            if(isStopped()){
+                break;
+            }
+
+            long actions = this.m_vPlaybackManager.getAvailableActions();
+            int state = this.m_vPlaybackManager.getPlaybackState();
+            int position = this.m_vPlaybackManager.getPlaybackPosition();
+
+            if(this.m_vPlaybackManager.isPlayingOrPaused()){
+                @SuppressLint("WrongConstant")
+                PlaybackState.Builder builder = new PlaybackState.Builder()
+                        .setActions(actions)
+                        .setState(state,position, 1.0F, SystemClock.elapsedRealtime());
+
+                this.m_vPlaybackManager.getPlaybackCallback().onPlaybackStateChanged(builder.build());
+                if(state != PlaybackState.STATE_PLAYING){
+                    this.onStop();
+                }
+            }
             try{
                 Thread.sleep(this.m_vInterval);
             }
@@ -34,15 +56,18 @@ public class PlaybackSubThread implements Runnable {
                 interrupt();
             }
         }
+
+        isStopped.set(false);
+        isRunning.set(false);
     }
     private void interrupt(){
-        this.isRunning.set(false);
+        this.isRunning.set(true);
         this.m_vWorker.interrupt();
     }
     public Thread getWorker(){ return this.m_vWorker;}
 
     public boolean isRunning(){return this.isRunning.get();}
-    public boolean isStopped(){return this.inStopped.get();}
+    public boolean isStopped(){return this.isStopped.get();}
 
     public void onStart(){this.m_vWorker.start();}
     public void onStop(){this.interrupt();}

@@ -1,6 +1,7 @@
 package com.example.mediaplayer.services;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.media.browse.MediaBrowser;
 import android.media.session.PlaybackState;
@@ -19,6 +20,9 @@ public class MediaPlayerService extends MediaBrowserService implements IPlayback
     private final String TAG = this.getClass().getSimpleName();
     private MediaPlayerBroadCastHelper m_vBroadCastHelper;
     private MediaSessionListener m_vCallback = new MediaSessionListener(this);
+
+    private Context m_vContext;
+    private int m_vCurrentIndex;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
