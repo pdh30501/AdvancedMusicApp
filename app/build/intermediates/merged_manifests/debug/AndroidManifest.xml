@@ -31,6 +31,12 @@
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication" >
         <activity
+            android:name="com.example.myapplication.Main_Login_Activity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.myapplication.MainActivity2"
+            android:exported="false" />
+        <activity
             android:name="com.example.myapplication.MainActivity"
             android:exported="true" >
             <intent-filter>

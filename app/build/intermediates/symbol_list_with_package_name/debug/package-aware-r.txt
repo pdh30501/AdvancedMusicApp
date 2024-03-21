@@ -2805,6 +2805,8 @@ drawable album_24px
 drawable arrow_back_24px
 drawable avd_hide_password
 drawable avd_show_password
+drawable bg_btn
+drawable bg_login
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -2818,7 +2820,9 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable facebook
 drawable favorite_24px
+drawable google_plus
 drawable home_24px
 drawable ic_arrow_back_black_24
 drawable ic_clear_black_24
@@ -2834,7 +2838,11 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable icon_lock
 drawable library_music_24px
+drawable linkedin
+drawable login
+drawable login_edt
 drawable m3_appbar_background
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -2916,6 +2924,7 @@ drawable skip_previous_24px
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable twitter
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -3573,6 +3582,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_main_login
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3598,6 +3608,7 @@ layout layout_media_player_bar
 layout layout_media_player_view
 layout layout_root_mediaplayer
 layout layout_root_navigation_bar
+layout login_activity
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

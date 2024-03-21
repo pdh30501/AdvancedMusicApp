@@ -26,11 +26,19 @@ dimen pause_icon_size
 dimen play_icon_size
 drawable album_24px
 drawable arrow_back_24px
+drawable bg_btn
+drawable bg_login
+drawable facebook
 drawable favorite_24px
+drawable google_plus
 drawable home_24px
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable icon_lock
 drawable library_music_24px
+drawable linkedin
+drawable login
+drawable login_edt
 drawable more_vert_24px
 drawable play_arrow_24px
 drawable repeat_24px
@@ -38,6 +46,7 @@ drawable settings_24px
 drawable shuffle_24px
 drawable skip_next_24px
 drawable skip_previous_24px
+drawable twitter
 id btn_back
 id btn_favorite
 id btn_more
@@ -75,6 +84,7 @@ id tab_library
 id tab_settings
 id text_view_container
 layout activity_main
+layout activity_main_login
 layout fragment_home
 layout fragment_library
 layout fragment_settings
@@ -84,6 +94,7 @@ layout layout_media_player_bar
 layout layout_media_player_view
 layout layout_root_mediaplayer
 layout layout_root_navigation_bar
+layout login_activity
 menu navigation_bar_tabs
 mipmap ic_launcher
 mipmap ic_launcher_round
