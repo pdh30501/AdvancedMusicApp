@@ -31,3 +31,6 @@
 
      # Android Profiling
      *.hprof
+local.properties
+local.properties
+*.properties

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="fab_content_description">Your description here</string>
+
 </resources>

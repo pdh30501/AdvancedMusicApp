@@ -9,7 +9,7 @@ import com.example.myapplication.ui.adapters.viewholders.BaseViewHolder;
 import java.util.List;
 
 public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
-    private ViewType m_vLayoutViewType;
+    ViewType m_vLayoutViewType;
 
 
     public enum ViewType {
@@ -17,7 +17,10 @@ public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseV
     }
     public void setAdapterViewType(ViewType viewType) {
         this.m_vLayoutViewType = viewType;
+        // Gọi notifyDataSetChanged() ở đây để thông báo cho RecyclerView rằng dữ liệu đã thay đổi
+        notifyDataSetChanged();
     }
+
     final List<BaseRecyclerViewItem> m_vItems;
 
     public BaseRecyclerViewAdapter(List<BaseRecyclerViewItem> items)

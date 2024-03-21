@@ -34,6 +34,7 @@ public class FragmentLibrary extends Fragment {
     private GridLayoutManagerExtended m_vGridLayout;
 
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,50 +48,55 @@ public class FragmentLibrary extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.m_vLibraryRecyclerView = findViewById(R.id.Library_recyclerView);
+        // Khởi tạo và tìm kiếm RecyclerView trong layout
+        this.m_vLibraryRecyclerView = m_vRootView.findViewById(R.id.library_recyclerView);
 
         int panalheigjts = getResources().getDimensionPixelSize(R.dimen.navigation_bar_height) + getResources().getDimensionPixelSize(R.dimen.mediaplayerbar_height);
-        this.m_vLibraryRecyclerView.setPadding(0,0, 0, panalheigjts);
+        this.m_vLibraryRecyclerView.setPadding(0, 0, 0, panalheigjts);
 
+        // Lấy danh sách các bài hát từ MediaManager
         List<Song> songs = LibraryManager.getSongs(getContext());
         List<BaseRecyclerViewItem> items = new ArrayList<>();
 
-        for(Song song : songs)
-        {
+        // Tạo danh sách các mục RecyclerView từ danh sách bài hát
+        for (Song song : songs) {
             items.add(new SongRecyclerViewItem(song));
         }
 
-        LibraryRecyclerViewAdapter adapter = new LibraryRecyclerViewAdapter(items);
-
+        // Khởi tạo Adapter và đặt loại hiển thị ban đầu là LIST
         this.m_vLibraryAdapter = new LibraryRecyclerViewAdapter(items);
-        this.m_vLibraryAdapter.setHasStableIds(true);
-        setAdapterViewType(BaseRecyclerViewAdapter.ViewType.GRID);
-//        this.m_vLibraryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        setAdapterViewType(BaseRecyclerViewAdapter.ViewType.LIST);
+
+        // Đặt Adapter cho RecyclerView
         this.m_vLibraryRecyclerView.setAdapter(this.m_vLibraryAdapter);
 
-        FloatingActionButton btn = findViewById(R.id.btn_test_layout);
+        // Lắng nghe sự kiện click của nút Floating Action Button để thay đổi loại hiển thị
+        FloatingActionButton btn = m_vRootView.findViewById(R.id.btn_test_layout);
         btn.setOnClickListener(v -> {
             setAdapterViewType((
-                    this.m_vLibraryAdapter.getViewType() == BaseRecyclerViewAdapter.ViewType.GRID) ?
-                    BaseRecyclerViewAdapter.ViewType.LIST : BaseRecyclerViewAdapter.ViewType.GRID);
+                    this.m_vLibraryAdapter.getViewType() == BaseRecyclerViewAdapter.ViewType.LIST) ?
+                    BaseRecyclerViewAdapter.ViewType.GRID : BaseRecyclerViewAdapter.ViewType.LIST);
         });
     }
+
     private void setAdapterViewType(BaseRecyclerViewAdapter.ViewType viewType) {
         this.m_vLibraryAdapter.setAdapterViewType(viewType);
         int rowCount = (viewType == BaseRecyclerViewAdapter.ViewType.LIST) ? 1 : 3;
 
-        if(m_vGridLayout == null) {
+        // Kiểm tra xem m_vGridLayout đã được khởi tạo chưa
+        if (m_vGridLayout == null) {
+            // Nếu không, tạo một GridLayoutManager mới và đặt nó cho RecyclerView
             this.m_vGridLayout = new GridLayoutManagerExtended(getContext(), rowCount);
             this.m_vLibraryRecyclerView.setLayoutManager(this.m_vGridLayout);
-        }
-        else {
+        } else {
+            // Nếu đã có, chỉ cần cập nhật số cột của GridLayoutManager hiện tại
             this.m_vGridLayout.setSpanCount(rowCount);
-            this.m_vLibraryAdapter.notifyDataSetChanged();
-
         }
 
-        this.m_vLibraryAdapter.setAdapterViewType(viewType);
+        // Thông báo cho RecyclerView rằng dữ liệu đã thay đổi và cần cập nhật giao diện
+        this.m_vLibraryAdapter.notifyDataSetChanged();
     }
+
     public <T extends View> T findViewById(@IdRes int id){
         return this.m_vRootView.findViewById(id);
     }

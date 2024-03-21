@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.adapters.viewholders;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.cardview.widget.CardView;
@@ -36,7 +37,7 @@ public class SongViewHolder extends BaseViewHolder{
 
         super(itemView);
         this.m_vRootView = findViewById(R.id.item_root_view);
-        this.m_vImageView_Parent=findViewById(R.id.item_song_art_image_view_parent);
+        this.m_vImageView_Parent = findViewById(R.id.item_song_art_image_view_parent);
         this.m_vTextView_Title  = findViewById(R.id.item_song_title_text_view);
         this.m_vTextView_Artist  = findViewById(R.id.item_song_artist_text_view);
         this.m_vImageView_Art = findViewById(R.id.item_song_art_image_view);}
@@ -47,13 +48,16 @@ public class SongViewHolder extends BaseViewHolder{
             case GRID:
                 this.m_vRootView.setOrientation(LinearLayout.VERTICAL);
                 this.m_vImageView_Parent.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                Log.d("SongViewHolder", "onInitializeView: GRID");
                 break;
             case LIST:
                 this.m_vRootView.setOrientation(LinearLayout.HORIZONTAL);
                 this.m_vImageView_Parent.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, itemView.getResources().getDimensionPixelSize(R.dimen.item_library_song_art_size)));
+                Log.d("SongViewHolder", "onInitializeView: LIST");
                 break;
         }
     }
+
 
     @Override
     public void onBindViewHolder(BaseRecyclerViewItem viewItem) {
