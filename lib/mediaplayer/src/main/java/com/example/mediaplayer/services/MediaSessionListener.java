@@ -34,6 +34,7 @@ public class MediaSessionListener extends MediaSession.Callback {
     }
     @Override
     public void onStop() {
+        this.m_vService.getNotificationManager().onStop();
         this.m_vService.stopSelf();
     }
 }
