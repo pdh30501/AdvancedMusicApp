@@ -34,7 +34,11 @@ drawable google_plus
 drawable home_24px
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable icon
 drawable icon_lock
+drawable icon_pause_24px
+drawable icon_pause_48px
+drawable icon_play_arrow_48px
 drawable library_music_24px
 drawable linkedin
 drawable login

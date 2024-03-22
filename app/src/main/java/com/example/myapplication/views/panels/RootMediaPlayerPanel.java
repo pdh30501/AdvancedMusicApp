@@ -1,6 +1,9 @@
 package com.example.myapplication.views.panels;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.media.MediaMetadata;
+import android.media.session.PlaybackState;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -90,6 +93,15 @@ public class RootMediaPlayerPanel extends BasePanelView {
     public void onPanelStateChanged(int panelSate) {
 
     }
+    public void onUpdateMetadata(MediaMetadata mediaMetadata) {
+
+    }
+
+    public void onPlaybackStateChanged(PlaybackState state) {
+
+    }
+
+
     public void onSliding(IPanel<View> panel, int top,int dy, float slidingOffset){
         super.onSliding(panel,top,dy,slidingOffset);
 

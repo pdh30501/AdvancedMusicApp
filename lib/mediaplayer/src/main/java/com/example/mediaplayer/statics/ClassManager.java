@@ -3,24 +3,35 @@ package com.example.mediaplayer.statics;
 import androidx.annotation.NonNull;
 
 public class ClassManager {
-    private static ClassManager _instance;
+    private static ClassManager instance;
 
     private Class<?> m_vActivity;
 
-    private ClassManager(Class<?> activity){
+    private void setActivity(Class<?> activity) {
         this.m_vActivity = activity;
     }
 
-    public static Class<?> getActivity(){
-        if(_instance == null)
-            throw new RuntimeException("Instance was not created");
+    public static ClassManager CreateInstance(Class<?> activity) {
+        if (instance != null) {
+            instance.setActivity(activity);
+        }
+        else {
+            instance = new ClassManager();
+            instance.setActivity(activity);
+        }
 
-        return  _instance.m_vActivity;
+        return instance;
     }
 
-    public static void init(@NonNull Class<?> activity){
-        if(_instance == null || _instance.m_vActivity == null){
-            _instance = new ClassManager(activity);
-        }
+    public static ClassManager getInstance() {
+        return instance;
+    }
+
+    public static Class<?> getActivityClass() {
+        if (instance != null)
+            return instance.m_vActivity;
+
+        return null;
     }
 }
+

@@ -2838,7 +2838,11 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable icon
 drawable icon_lock
+drawable icon_pause_24px
+drawable icon_pause_48px
+drawable icon_play_arrow_48px
 drawable library_music_24px
 drawable linkedin
 drawable login

@@ -18,7 +18,7 @@ public class MediaSessionListener extends MediaSession.Callback {
 
     @Override
     public void onPause() {
-        this.m_vService.onPlayPause();
+        this.m_vService.onPause();
     }
     @Override
     public void onSkipToNext() {

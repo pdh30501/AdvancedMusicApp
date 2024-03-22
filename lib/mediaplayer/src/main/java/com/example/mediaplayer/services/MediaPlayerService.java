@@ -116,7 +116,7 @@ public class MediaPlayerService extends MediaBrowserService implements IPlayback
         this.m_vPlaybackManager.onSetQueue(queue);
         this.m_vPlaybackManager.onPlayIndex(index);
     }
-    public void onPlayPause() {
+    public void onPause() {
         this.m_vPlaybackManager.onPlayPause();
     }
     public void onPlayNext() {
@@ -136,5 +136,6 @@ public class MediaPlayerService extends MediaBrowserService implements IPlayback
     public void setSeekBarPosition(int position) {
         this.m_vPlaybackManager.onSeekTo(position);
     }
+
 
 }

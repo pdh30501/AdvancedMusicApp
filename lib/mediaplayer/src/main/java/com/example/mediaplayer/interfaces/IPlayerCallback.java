@@ -1,5 +1,8 @@
 package com.example.mediaplayer.interfaces;
 
+import com.example.mediaplayer.PlaybackManager;
+import com.example.mediaplayer.model.Song;
+
 import java.util.List;
 
 public interface IPlayerCallback {
@@ -16,7 +19,16 @@ public interface IPlayerCallback {
 
     void onSetSeekBar(int position);
 
-    void onUpdateQueue(List<Integer> queue, int queueIndex);
+
+    void onClickStop();
+
+    void onClickPlayPrevious();
+
+    void onSetSeekbar(int position);
+
+    void onSetRepeatType(@PlaybackManager.RepeatType int repeatType);
+
+    void onUpdateQueue(List<Song> queue, int queueIndex);
 
     void onDestroy();
 

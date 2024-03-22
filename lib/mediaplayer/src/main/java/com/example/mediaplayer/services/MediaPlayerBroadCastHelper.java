@@ -41,7 +41,7 @@ public class MediaPlayerBroadCastHelper {
     }).build();
 
     private final BroadcastReceiver onPlayPause =  ((ICustomBroadcastReceiver) (context, intent) -> {
-        MediaPlayerBroadCastHelper.this.m_vService.onPlayPause();
+        MediaPlayerBroadCastHelper.this.m_vService.onPause();
     }).build();
 
     private final BroadcastReceiver onUpdateQueue =  ((ICustomBroadcastReceiver) (context, intent) -> {
@@ -53,7 +53,7 @@ public class MediaPlayerBroadCastHelper {
     }).build();
 
     private final BroadcastReceiver setSeekbarPosition =  ((ICustomBroadcastReceiver) (context, intent) -> {
-        int position = intent.getIntExtra(IntentFields.EXTRA_SEEK_BAR_POSITION,-1);
+        int position = intent.getIntExtra(IntentFields.EXTRA_TRACK_POSITION,-1);
 
         if(position < 0) return;
         MediaPlayerBroadCastHelper.this.m_vService.setSeekBarPosition(position);

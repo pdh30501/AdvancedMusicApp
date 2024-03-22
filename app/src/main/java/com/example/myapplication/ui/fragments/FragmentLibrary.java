@@ -38,21 +38,16 @@ public class FragmentLibrary extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.m_vRootView=inflater.inflate(R.layout.fragment_library,container,false);
-
-        return this.m_vRootView;
-
+        // Inflate layout cho FragmentLibrary từ file layout fragment_library.xml
+        m_vRootView = inflater.inflate(R.layout.fragment_library, container, false);
+        m_vLibraryRecyclerView = m_vRootView.findViewById(R.id.library_recyclerView);
+        return m_vRootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Khởi tạo và tìm kiếm RecyclerView trong layout
-        this.m_vLibraryRecyclerView = m_vRootView.findViewById(R.id.library_recyclerView);
-
-        int panalheigjts = getResources().getDimensionPixelSize(R.dimen.navigation_bar_height) + getResources().getDimensionPixelSize(R.dimen.mediaplayerbar_height);
-        this.m_vLibraryRecyclerView.setPadding(0, 0, 0, panalheigjts);
 
         // Lấy danh sách các bài hát từ MediaManager
         List<Song> songs = LibraryManager.getSongs(getContext());
@@ -64,20 +59,24 @@ public class FragmentLibrary extends Fragment {
         }
 
         // Khởi tạo Adapter và đặt loại hiển thị ban đầu là LIST
-        this.m_vLibraryAdapter = new LibraryRecyclerViewAdapter(items);
+        m_vLibraryAdapter = new LibraryRecyclerViewAdapter(items);
         setAdapterViewType(BaseRecyclerViewAdapter.ViewType.LIST);
 
         // Đặt Adapter cho RecyclerView
-        this.m_vLibraryRecyclerView.setAdapter(this.m_vLibraryAdapter);
+        m_vLibraryRecyclerView.setAdapter(m_vLibraryAdapter);
+
+        // Thêm padding cho RecyclerView để tránh che phủ bởi thanh điều hướng và thanh điều khiển nhạc
+        int panelHeights = getResources().getDimensionPixelSize(R.dimen.navigation_bar_height) + getResources().getDimensionPixelSize(R.dimen.mediaplayerbar_height);
+        m_vLibraryRecyclerView.setPadding(0, 0, 0, panelHeights);
 
         // Lắng nghe sự kiện click của nút Floating Action Button để thay đổi loại hiển thị
-        FloatingActionButton btn = m_vRootView.findViewById(R.id.btn_test_layout);
+        FloatingActionButton btn = view.findViewById(R.id.btn_test_layout);
         btn.setOnClickListener(v -> {
-            setAdapterViewType((
-                    this.m_vLibraryAdapter.getViewType() == BaseRecyclerViewAdapter.ViewType.LIST) ?
+            setAdapterViewType((m_vLibraryAdapter.getViewType() == BaseRecyclerViewAdapter.ViewType.LIST) ?
                     BaseRecyclerViewAdapter.ViewType.GRID : BaseRecyclerViewAdapter.ViewType.LIST);
         });
     }
+
 
     private void setAdapterViewType(BaseRecyclerViewAdapter.ViewType viewType) {
         this.m_vLibraryAdapter.setAdapterViewType(viewType);
@@ -96,6 +95,7 @@ public class FragmentLibrary extends Fragment {
         // Thông báo cho RecyclerView rằng dữ liệu đã thay đổi và cần cập nhật giao diện
         this.m_vLibraryAdapter.notifyDataSetChanged();
     }
+
 
     public <T extends View> T findViewById(@IdRes int id){
         return this.m_vRootView.findViewById(id);
