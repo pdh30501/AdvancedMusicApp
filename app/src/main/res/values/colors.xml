@@ -10,4 +10,6 @@
     <color name="design_default_color_primary_variant">#3F51B5</color>
     <color name="material_dynamic_primary20">#ffffff</color>
     <color name="red">#FF0000</color>
-    <color name="material_dynamic_primary60">#FFC10700</color> </resources>
+    <color name="material_dynamic_primary60">#FFC10700</color>
+    <color name="dialog_color_1">#673AB7</color>
+<color name="dialog_color_2">#0064FA</color> </resources>
