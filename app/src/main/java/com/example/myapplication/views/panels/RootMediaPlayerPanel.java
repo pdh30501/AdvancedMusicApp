@@ -93,13 +93,7 @@ public class RootMediaPlayerPanel extends BasePanelView {
     public void onPanelStateChanged(int panelSate) {
 
     }
-    public void onUpdateMetadata(MediaMetadata mediaMetadata) {
 
-    }
-
-    public void onPlaybackStateChanged(PlaybackState state) {
-
-    }
 
 
     public void onSliding(IPanel<View> panel, int top,int dy, float slidingOffset){
@@ -108,5 +102,11 @@ public class RootMediaPlayerPanel extends BasePanelView {
         mMediaPlayerView.onSliding(slidingOffset,MediaPlayerView.STATE_NORMAL);
         mMediaPlayerBarView.onSliding(slidingOffset,MediaPlayerBarView.STATE_NORMAL);
 
+    }
+
+    public void onPlaybackStateChanged(PlaybackState state) {
+    }
+
+    public void onMetadataChanged(MediaMetadata metadata) {
     }
 }

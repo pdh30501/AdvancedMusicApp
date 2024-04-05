@@ -13,6 +13,7 @@ import com.example.myapplication.views.panels.RootMediaPlayerPanel;
 import com.example.myapplication.views.panels.RootNavigationBarPanel;
 import com.realgear.multislidinguppanel.Adapter;
 import com.realgear.multislidinguppanel.MultiSlidingUpPanelLayout;
+import com.realgear.multislidinguppanel.PanelStateListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,53 +38,41 @@ public class UIThread {
         onCreate();
 
 
-
         this.m_vMediaPlayerThread = new MediaPlayerThread(this.m_vMainActivity,getCallback());
         this.m_vMediaPlayerThread.onStart();
     }
-
-
 
     public MediaController.Callback getCallback() {
         return new MediaController.Callback() {
             @Override
             public void onPlaybackStateChanged(@Nullable PlaybackState state) {
-                super.onPlaybackStateChanged(state);
-
-                if (mRootMediaPlayerPanel != null) {
-                    mRootMediaPlayerPanel.onPlaybackStateChanged(state);
-                }
+                UIThread.this.m_vMultiSlidingPanel.getAdapter().getItem(RootMediaPlayerPanel.class).onPlaybackStateChanged(state);
             }
 
             @Override
             public void onMetadataChanged(@Nullable MediaMetadata metadata) {
-                super.onMetadataChanged(metadata);
-
-                if (mRootMediaPlayerPanel != null && metadata != null) {
-                    mRootMediaPlayerPanel.onUpdateMetadata(metadata);
-                }
+                UIThread.this.m_vMultiSlidingPanel.getAdapter().getItem(RootMediaPlayerPanel.class).onMetadataChanged(metadata);
             }
         };
     }
 
-
-
-
     public static UIThread getInstance() { return instance; }
-
 
     public MediaPlayerThread getMediaPlayerThread() {
         return this.m_vMediaPlayerThread;
     }
 
     public void onCreate() {
-        this.m_vMultiSlidingPanel = findViewById(R.id.root_sliding_up_panel);
+        MultiSlidingUpPanelLayout panelLayout = findViewById(R.id.root_sliding_up_panel);
 
         List<Class<?>> items = new ArrayList<>();
 
         items.add(RootMediaPlayerPanel.class);
         items.add(RootNavigationBarPanel.class);
 
+        panelLayout.setPanelStateListener(new PanelStateListener(panelLayout));
+
+        panelLayout.setAdapter(new Adapter(this.m_vMainActivity,items));
     }
 
 
