@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.adapters.viewholders.BaseViewHolder;
+import com.example.myapplication.ui.adapters.viewholders.PlaylistViewHolder;
 import com.example.myapplication.ui.adapters.viewholders.SongViewHolder;
 
 import java.lang.reflect.Constructor;
@@ -16,6 +17,7 @@ public class BaseViewHelper {
 
     static {
         m_vLayoutIds.put(SongViewHolder.class, R.layout.item_library_song_view);
+        m_vLayoutIds.put(PlaylistViewHolder.class, R.layout.item_library_song_view);
     }
 
     private static int getLayoutId (Class<?> viewHolder) {
