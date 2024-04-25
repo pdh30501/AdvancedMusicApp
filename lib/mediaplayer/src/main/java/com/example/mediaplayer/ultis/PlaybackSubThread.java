@@ -53,7 +53,7 @@ public class PlaybackSubThread implements Runnable {
                 Thread.sleep(this.m_vInterval);
             }
             catch (InterruptedException ignore){
-                interrupt();
+                this.interrupt();
             }
         }
 

@@ -9,6 +9,4 @@ public interface IPlaybackCallback {
     void onPlaybackStateChanged(PlaybackState playbackState);
 
     void onUpdateMetadata(Song song);
-
-
 }

@@ -16,7 +16,7 @@ public class MediaPlayerThread {
     private IPlayerCallback m_vCallback;
 
     public MediaPlayerThread(MainActivity activity, MediaController.Callback callback) {
-        ClassManager.CreateInstance(MainActivity.class);
+        ClassManager.init(MainActivity.class);
         this.m_vCorePlayer = new CorePlayer(activity, callback);
         this.m_vCallback = this.m_vCorePlayer.getCallback();
 

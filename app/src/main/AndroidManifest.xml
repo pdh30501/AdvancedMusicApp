@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -33,11 +34,9 @@
             </intent-filter>
             <intent-filter>
                 <action
-                    android:name="com.example.advancedmusicapp.MainActivity" />
-
+                    android:name="com.example.myapplication.MainActivity" />
                 <category
                     android:name="android.intent.category.DEFAULT" />
-
                 <category
                     android:name="com.example.mediaplayer" />
             </intent-filter>

@@ -6,7 +6,6 @@ import android.media.session.MediaController;
 import android.util.Log;
 
 import com.example.mediaplayer.interfaces.IPlayerCallback;
-import com.example.mediaplayer.model.Song;
 import com.example.mediaplayer.statics.IntentFields;
 
 import java.util.ArrayList;
@@ -56,20 +55,11 @@ public class CorePlayer {
                     CorePlayer.this.m_vActivity.sendBroadcast(intent);
                 }
 
-
                 @Override
                 public void onClickPlayPause() {
                     Intent intent = new Intent(IntentFields.INTENT_PLAY_PAUSE);
                     CorePlayer.this.m_vActivity.sendBroadcast(intent);
                 }
-
-                @Override
-                public void onSetSeekBar(int position) {
-                    Intent intent = new Intent(IntentFields.INTENT_SET_SEEKBAR);
-                    intent.putExtra(IntentFields.EXTRA_TRACK_POSITION, position);
-                    CorePlayer.this.m_vActivity.sendBroadcast(intent);
-                }
-
 
                 @Override
                 public void onClickStop() {
@@ -78,18 +68,11 @@ public class CorePlayer {
                 }
 
                 @Override
-                public void onClickPlayPrevious() {
-                    Intent intent = new Intent(IntentFields.ACTION_PREV);
-                    CorePlayer.this.m_vActivity.sendBroadcast(intent);
-                }
-
-                @Override
                 public void onSetSeekbar(int position) {
                     Intent intent = new Intent(IntentFields.INTENT_SET_SEEKBAR);
-                    intent.putExtra(IntentFields.EXTRA_TRACK_POSITION, position);
+                    intent.putExtra(IntentFields.EXTRA_SEEK_BAR_POSITION, position);
                     CorePlayer.this.m_vActivity.sendBroadcast(intent);
                 }
-
 
                 @Override
                 public void onSetRepeatType(@PlaybackManager.RepeatType int repeatType) {
@@ -99,10 +82,9 @@ public class CorePlayer {
                 }
 
                 @Override
-                public void onUpdateQueue(List<Song> queue, int queueIndex) {
+                public void onUpdateQueue(List<Integer> queue, int queueIndex) {
 
                 }
-
 
                 @Override
                 public void onDestroy() {

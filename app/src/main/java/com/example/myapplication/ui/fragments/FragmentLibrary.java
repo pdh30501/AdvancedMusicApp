@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,7 @@ public class FragmentLibrary extends Fragment {
 
         // Khởi tạo Adapter và đặt loại hiển thị ban đầu là LIST
         m_vLibraryAdapter = new LibraryRecyclerViewAdapter(items);
-        setAdapterViewType(BaseRecyclerViewAdapter.ViewType.LIST);
+        setAdapterViewType(BaseRecyclerViewAdapter.ViewType.GRID);
 
         // Đặt Adapter cho RecyclerView
         m_vLibraryRecyclerView.setAdapter(m_vLibraryAdapter);
@@ -72,8 +73,11 @@ public class FragmentLibrary extends Fragment {
         // Lắng nghe sự kiện click của nút Floating Action Button để thay đổi loại hiển thị
         FloatingActionButton btn = view.findViewById(R.id.btn_test_layout);
         btn.setOnClickListener(v -> {
-            setAdapterViewType((m_vLibraryAdapter.getViewType() == BaseRecyclerViewAdapter.ViewType.LIST) ?
-                    BaseRecyclerViewAdapter.ViewType.GRID : BaseRecyclerViewAdapter.ViewType.LIST);
+            setAdapterViewType((this.m_vLibraryAdapter.getViewType() == BaseRecyclerViewAdapter.ViewType.GRID) ?
+                    BaseRecyclerViewAdapter.ViewType.LIST : BaseRecyclerViewAdapter.ViewType.GRID);
+            m_vLibraryRecyclerView.setAdapter(m_vLibraryAdapter);
+
+
         });
     }
 

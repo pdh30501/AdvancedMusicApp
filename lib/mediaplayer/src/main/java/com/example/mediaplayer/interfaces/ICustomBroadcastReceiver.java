@@ -16,4 +16,12 @@ public interface ICustomBroadcastReceiver {
         };
     }
 
+    static BroadcastReceiver onCreate (ICustomBroadcastReceiver args) {
+        return new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                args.onReceive(context, intent);
+            }
+        };
+    }
 }

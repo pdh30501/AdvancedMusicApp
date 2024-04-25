@@ -12,4 +12,8 @@
     <color name="red">#FF0000</color>
     <color name="material_dynamic_primary60">#FFC10700</color>
     <color name="dialog_color_1">#673AB7</color>
-<color name="dialog_color_2">#0064FA</color> </resources>
+<color name="dialog_color_2">#0064FA</color>
+    <color name="default_vibrant_color">#7C7C7C</color>
+    <color name="default_vibrant_dark_color">#424242</color>
+    <color name="default_vibrant_light_color">#CACACA</color>
+</resources>

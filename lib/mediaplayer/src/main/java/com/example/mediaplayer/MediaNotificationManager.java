@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ServiceInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
 import android.media.MediaDescription;
 import android.media.MediaMetadata;
@@ -19,30 +21,28 @@ import android.os.Build;
 import com.example.mediaplayer.services.MediaPlayerService;
 import com.example.mediaplayer.statics.IntentFields;
 
-public class MediaNoficationManager extends BroadcastReceiver {
-    public static  final String TAG = MediaNoficationManager.class.getSimpleName();
-    public static final String NOTIFICATION_NAME = MediaPlayerService.class.getSimpleName();
+public class MediaNotificationManager extends BroadcastReceiver {
+    public static  final String TAG = MediaNotificationManager.class.getSimpleName();
+    public static final String NOTIFICATION_NAME = MediaNotificationManager.class.getSimpleName();
+            //"Media Player Service";
     public static final  int NOTIFICATION_ID = 101;
-
     private final NotificationManager m_vNotificationManager;
     private final Notification.Action m_vPlayAction;
     private final Notification.Action m_vPauseAction;
     private final Notification.Action m_vPlayNextAction;
     private final Notification.Action m_vPlayPrevAction;
-
-
     private final MediaPlayerService m_vService;
 
     private boolean m_vStarted;
     private  boolean isRegistered;
 
-    public MediaNoficationManager(MediaPlayerService mediaPlayerService) {
+    public MediaNotificationManager(MediaPlayerService mediaPlayerService) {
         this.m_vService = mediaPlayerService;
 
         this.m_vStarted = false;
         this.isRegistered = false;
 
-        String pkgName = mediaPlayerService.getPackageName();
+        String pkgName = this.m_vService.getPackageName();
 
         PendingIntent playActionIntent = PendingIntent.getBroadcast((Context) m_vService, 100, new Intent(IntentFields.ACTION_PLAY).setPackage(pkgName), PendingIntent.FLAG_IMMUTABLE);
         PendingIntent pauseActionIntent = PendingIntent.getBroadcast((Context) m_vService, 100, new Intent(IntentFields.ACTION_PAUSE).setPackage(pkgName), PendingIntent.FLAG_IMMUTABLE);
@@ -69,12 +69,12 @@ public class MediaNoficationManager extends BroadcastReceiver {
 
         NotificationChannel channel = new NotificationChannel(pkgName, NOTIFICATION_NAME, NotificationManager.IMPORTANCE_NONE);
         channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-        m_vNotificationManager.createNotificationChannel(channel);
+        this.m_vNotificationManager.createNotificationChannel(channel);
         // Todo
     }
     private PendingIntent getContentIntent() {
         String pkgName = m_vService.getPackageName();
-        Intent intent = new Intent("com.example.MainActivity");
+        Intent intent = new Intent("com.example.myapplication.MainActivity");
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 
         return PendingIntent.getActivity((Context) this.m_vService, 100, intent, PendingIntent.FLAG_IMMUTABLE);
@@ -116,63 +116,64 @@ public class MediaNoficationManager extends BroadcastReceiver {
     }
 
     public void onUpdateNotification(MediaMetadata mediaMetadata, PlaybackState playbackState, MediaSession.Token token) {
-        Notification.Action action;
-
         if (playbackState == null || playbackState.getState() == PlaybackState.STATE_STOPPED || playbackState.getState() == PlaybackState.STATE_NONE) {
             this.m_vService.stopForeground(true);
             try {
                 this.m_vService.unregisterReceiver(this);
+            } catch (Exception ignore) {
             }
-            catch (Exception ignore) { }
             this.m_vService.stopSelf();
             return;
         }
 
         boolean isPlaying = playbackState.getState() == PlaybackState.STATE_PLAYING;
 
-        int[] actions = (this.m_vService.getPlaybackManager().canPlayPrev()) ? new int[] { 0, 1 } : new int[1];
-
-        Notification.MediaStyle mediaStyle = (new Notification.MediaStyle())
+        int[] actions = (this.m_vService.getPlaybackManager().canPlayPrev()) ? new int[] {0, 1} : new int[1];
+        Notification. MediaStyle mediaStyle = new Notification. MediaStyle()
                 .setMediaSession(token)
                 .setShowActionsInCompactView(actions);
-
         MediaDescription mediaDescription = mediaMetadata.getDescription();
-
-        Notification.Builder builder = (new Notification.Builder((Context) this.m_vService, IntentFields.CHANNEL_ID))
+        // Tạo Builder thông báo
+        Notification.Builder builder = new Notification.Builder((Context) this.m_vService, IntentFields.CHANNEL_ID)
                 .setCategory("service")
-                .setStyle((Notification.Style)mediaStyle)
+                .setStyle(mediaStyle)
                 .setContentIntent(getContentIntent())
-                .setSmallIcon(com.google.android.material.R.drawable.material_ic_keyboard_arrow_previous_black_24dp)
-                .setContentTitle(mediaDescription.getTitle())
-                .setContentText(mediaDescription.getSubtitle())
+                .setSmallIcon(com.google.android.material.R.drawable.material_ic_keyboard_arrow_next_black_24dp)
+                .setContentTitle(mediaMetadata.getDescription().getTitle())
+                .setContentText(mediaMetadata.getDescription().getSubtitle())
                 .setLargeIcon(mediaDescription.getIconBitmap())
                 .setOngoing(isPlaying);
 
+        // Xác định hành động hiện tại
+        Notification.Action action = isPlaying ? this.m_vPauseAction : this.m_vPlayAction;
 
-        action = isPlaying ? this.m_vPauseAction : this.m_vPlayAction;
-
-        if(this.m_vService.getPlaybackManager().canPlayPrev()) {
+        // Thêm hành động vào thông báo
+        if (this.m_vService.getPlaybackManager().canPlayPrev()) {
             builder.addAction(this.m_vPlayPrevAction);
         }
         builder.addAction(action);
-        if(this.m_vService.getPlaybackManager().canPlayNext()) {
+
+        if (this.m_vService.getPlaybackManager().canPlayNext()) {
             builder.addAction(this.m_vPlayNextAction);
         }
 
         Notification notification = builder.build();
 
         if (isPlaying && !this.m_vStarted) {
+            // Khởi động dịch vụ và hiển thị thông báo
             Intent intent = new Intent((Context) this.m_vService, MediaPlayerService.class);
-            this.m_vService.startForegroundService(intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                this.m_vService.startForegroundService(intent);
+            } else {
+                this.m_vService.startService(intent);
+            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 this.m_vService.startForeground(NOTIFICATION_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
-            }
-            else {
+            } else {
                 this.m_vService.startForeground(NOTIFICATION_ID, notification);
             }
             this.m_vStarted = true;
-        }
-        else {
+        } else {
             if (!isPlaying && this.m_vStarted) {
                 this.m_vService.stopForeground(false);
                 this.m_vStarted = false;
@@ -180,4 +181,5 @@ public class MediaNoficationManager extends BroadcastReceiver {
             this.m_vNotificationManager.notify(NOTIFICATION_ID, notification);
         }
     }
+
 }
