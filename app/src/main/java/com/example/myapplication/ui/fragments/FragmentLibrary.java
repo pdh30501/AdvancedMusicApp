@@ -46,6 +46,7 @@ public class FragmentLibrary extends Fragment {
     }
 
     @Override
+    // Phương thức onViewCreated được gọi sau khi onCreateView đã hoàn thành
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -96,7 +97,7 @@ public class FragmentLibrary extends Fragment {
             this.m_vGridLayout.setSpanCount(rowCount);
         }
 
-        // Thông báo cho RecyclerView rằng dữ liệu đã thay đổi và cần cập nhật giao diện
+        // Thông báo cho Adapter rằng dữ liệu đã thay đổi
         this.m_vLibraryAdapter.notifyDataSetChanged();
     }
 
