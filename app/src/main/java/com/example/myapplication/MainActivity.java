@@ -12,14 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.ui.UIThread;
 import com.example.myapplication.utils.PermissionManager;
-import com.example.myapplication.views.panels.RootMediaPlayerPanel;
-import com.example.myapplication.views.panels.RootNavigationBarPanel;
-import com.realgear.multislidinguppanel.Adapter;
-import com.realgear.multislidinguppanel.MultiSlidingUpPanelLayout;
-import com.realgear.multislidinguppanel.PanelStateListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
             if(!Environment.isExternalStorageManager())
             {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                Uri uri = Uri.fromParts("package", getPackageName(),null);
+                intent.setData(uri);
                 startActivity(intent);
             }
         }

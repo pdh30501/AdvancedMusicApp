@@ -2,7 +2,7 @@ package com.example.myapplication.ui.adapters.models;
 
 public abstract class BaseRecyclerViewItem {
     public  enum ItemType{
-        SONG
+        PLAYLIST, SONG
     }
 
     private  final String m_vTitle;

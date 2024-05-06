@@ -40,7 +40,8 @@ public class SongViewHolder extends BaseViewHolder{
         this.m_vImageView_Parent = findViewById(R.id.item_song_art_image_view_parent);
         this.m_vTextView_Title  = findViewById(R.id.item_song_title_text_view);
         this.m_vTextView_Artist  = findViewById(R.id.item_song_artist_text_view);
-        this.m_vImageView_Art = findViewById(R.id.item_song_art_image_view);}
+        this.m_vImageView_Art = findViewById(R.id.item_song_art_image_view);
+    }
 
     @Override
     public void onInitializeView(BaseRecyclerViewAdapter.ViewType viewType) {

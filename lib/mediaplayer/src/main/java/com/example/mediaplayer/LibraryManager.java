@@ -84,9 +84,9 @@ public class LibraryManager {
 
         builder.setMediaId(String.valueOf(song.getId()));
         builder.setIconBitmap(getSongArt(song));
-        builder.setTitle(song.getTile());
+        builder.setTitle(song.getTitle());
         builder.setSubtitle(song.getArtistName());
-        builder.setDescription(song.getTile());
+        builder.setDescription(song.getTitle());
 
         return builder.build();
     }
@@ -99,7 +99,7 @@ public class LibraryManager {
         builder.putString(MediaMetadata.METADATA_KEY_MEDIA_ID, String.valueOf(song.getId()));
         builder.putString(MediaMetadata.METADATA_KEY_ALBUM, song.getAlbumName());
         builder.putString(MediaMetadata.METADATA_KEY_ARTIST, song.getArtistName());
-        builder.putString(MediaMetadata.METADATA_KEY_TITLE, song.getTile());
+        builder.putString(MediaMetadata.METADATA_KEY_TITLE, song.getTitle());
         builder.putLong(MediaMetadata.METADATA_KEY_DURATION, song.getDuration());
 
         Bitmap songArt = getSongArt(song);

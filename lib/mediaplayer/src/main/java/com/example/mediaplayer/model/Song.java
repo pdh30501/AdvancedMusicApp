@@ -28,7 +28,7 @@ public class Song {
         return m_vId;
     }
 
-    public String getTile() {
+    public String getTitle() {
         return m_vTile;
     }
 
@@ -51,4 +51,6 @@ public class Song {
     public String getDisplayName() {
         return m_vDisplayName;
     }
+
+
 }

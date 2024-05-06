@@ -8,11 +8,13 @@ public class SongRecyclerViewItem extends  BaseRecyclerViewItem{
 
     public SongRecyclerViewItem(Song song) {
 
-        super(song.getTile(), ItemType.SONG);
+        super(song.getTitle(), ItemType.SONG);
 
         this.m_vItem = song;
     }
-
+    public long getSongId() {
+        return this.m_vItem.getId();
+    }
     public  String getFilePath()
     {
         return this.m_vItem.getData();
@@ -21,7 +23,7 @@ public class SongRecyclerViewItem extends  BaseRecyclerViewItem{
     @Override
     public int getHashCode() {
         int result = String.valueOf(this.m_vItem.getId()).hashCode();
-        result = 31 * result * this.m_vItem.getTile().hashCode();
+        result = 31 * result * this.m_vItem.getTitle().hashCode();
         result = 31 * result * this.m_vItem.getData().hashCode();
 
         return result;

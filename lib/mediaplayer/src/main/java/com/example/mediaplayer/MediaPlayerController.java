@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.media.MediaMetadata;
-import android.media.MediaPlayer;
 import android.media.browse.MediaBrowser;
 import android.media.session.MediaController;
 import android.media.session.PlaybackState;
@@ -81,13 +80,9 @@ public class MediaPlayerController {
         if (this.m_vMediaBrowser != null && this.m_vMediaBrowser.isConnected())
             this.onDestroy();
 
-        // PC id a bit slow
-        this.m_vMediaBrowser = new MediaBrowser(
-                this.m_vActivity,
-                new ComponentName(this.m_vActivity, MediaPlayerService.class),
-                this.m_vConnectionCallback,
-                null
-        );
+        this.m_vMediaBrowser = new MediaBrowser(this.m_vActivity, new ComponentName(this.m_vActivity, MediaPlayerService.class), this.m_vConnectionCallback, null);
+        this.m_vMediaBrowser.connect();
+
     }
 
     public void onDestroy(){

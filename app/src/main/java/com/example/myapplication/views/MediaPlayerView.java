@@ -6,6 +6,7 @@ import androidx.annotation.IdRes;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.myapplication.R;
+import com.realgear.multislidinguppanel.MultiSlidingUpPanelLayout;
 
 public class MediaPlayerView {
 
@@ -40,5 +41,15 @@ public class MediaPlayerView {
 
     public <T extends View> T findViewById(@IdRes int id){
         return this.mRootView.findViewById(id);
+    }
+
+    public void onPanelStateChanged(int panelSate) {
+        if (panelSate == MultiSlidingUpPanelLayout.COLLAPSED) {
+            this.mRootView.setVisibility(View.INVISIBLE);
+        }
+        else {
+            this.mRootView.setVisibility(View.VISIBLE);
+
+        }
     }
 }
