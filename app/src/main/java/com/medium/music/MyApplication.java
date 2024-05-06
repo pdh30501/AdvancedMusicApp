@@ -6,13 +6,13 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
 
-import com.google.android.gms.ads.MobileAds;
 import com.medium.music.prefs.DataStoreManager;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MyApplication extends Application {
+
 
     // Firebase url
     public static final String FIREBASE_URL = "https://music-android-ae620-default-rtdb.asia-southeast1.firebasedatabase.app";
@@ -32,8 +32,6 @@ public class MyApplication extends Application {
         mFirebaseDatabase = FirebaseDatabase.getInstance(FIREBASE_URL);
         createChannelNotification();
         DataStoreManager.init(getApplicationContext());
-
-        MobileAds.initialize(this, initializationStatus -> {});
     }
 
     private void createChannelNotification() {
