@@ -1,57 +1,91 @@
-package com.medium.music;
+package com.medium.music.prefs;
 
-import android.app.Application;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
-import android.os.Build;
 
-import com.medium.music.prefs.DataStoreManager;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+public class MySharedPreferences {
+    private static final String FRUITY_DROID_PREFERENCES = "MY_PREFERENCES";
+    private Context mContext;
 
-public class MySharedPreferences extends Application {
-
-    // Firebase url
-    public static final String FIREBASE_URL = "https://music-android-ae620-default-rtdb.asia-southeast1.firebasedatabase.app";
-
-    public static final String CHANNEL_ID = "channel_music_basic_id";
-    private static final String CHANNEL_NAME = "channel_music_basic_name";
-    private FirebaseDatabase mFirebaseDatabase;
-
-    public static MyApplication get(Context context) {
-        return (MyApplication) context.getApplicationContext();
+    private MySharedPreferences() {
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseDatabase.getInstance(FIREBASE_URL);
-        createChannelNotification();
-        DataStoreManager.init(getApplicationContext());
+    public MySharedPreferences(Context mContext) {
+        this.mContext = mContext;
     }
 
-    private void createChannelNotification() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME,
-                    NotificationManager.IMPORTANCE_MIN);
-            channel.setSound(null, null);
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel);
-        }
+    public void putLongValue(String key, long n) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        android.content.SharedPreferences.Editor editor = pref.edit();
+        editor.putLong(key, n);
+        editor.apply();
     }
 
-    public DatabaseReference getSongsDatabaseReference() {
-        return mFirebaseDatabase.getReference("/songs");
+    public long getLongValue(String key) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        return pref.getLong(key, 0);
     }
 
-    public DatabaseReference getFeedbackDatabaseReference() {
-        return mFirebaseDatabase.getReference("/feedback");
+    public void putIntValue(String key, int n) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        android.content.SharedPreferences.Editor editor = pref.edit();
+        editor.putInt(key, n);
+        editor.apply();
     }
 
-    public DatabaseReference getCountViewDatabaseReference(long songId) {
-        return FirebaseDatabase.getInstance().getReference("/songs/" + songId + "/count");
+    public int getIntValue(String key) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        return pref.getInt(key, 0);
+    }
+
+    public void putStringValue(String key, String s) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        android.content.SharedPreferences.Editor editor = pref.edit();
+        editor.putString(key, s);
+        editor.apply();
+    }
+
+    public String getStringValue(String key) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        return pref.getString(key, "");
+    }
+
+    public String getStringValue(String key, String defaultValue) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        return pref.getString(key, defaultValue);
+    }
+
+    public void putBooleanValue(String key, Boolean b) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        android.content.SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean(key, b);
+        editor.apply();
+    }
+
+    public boolean getBooleanValue(String key) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        return pref.getBoolean(key, false);
+    }
+
+    public void putFloatValue(String key, float f) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        android.content.SharedPreferences.Editor editor = pref.edit();
+        editor.putFloat(key, f);
+        editor.apply();
+    }
+
+    public float getFloatValue(String key) {
+        android.content.SharedPreferences pref = mContext.getSharedPreferences(
+                FRUITY_DROID_PREFERENCES, 0);
+        return pref.getFloat(key, 0.0f);
     }
 }

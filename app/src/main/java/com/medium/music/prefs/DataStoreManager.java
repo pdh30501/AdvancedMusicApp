@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.Nullable;
 
-import com.medium.music.MySharedPreferences;
+import com.medium.music.prefs.MySharedPreferences;
 import com.medium.music.model.User;
 import com.medium.music.utils.StringUtil;
 import com.google.gson.Gson;
