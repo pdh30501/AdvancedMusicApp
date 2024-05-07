@@ -138,3 +138,182 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         }
         NotificationManager notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notifManager.cancelAll();
+        sendBroadcastChangeListener();
+        stopSelf();
+    }
+
+    private void resumeSong() {
+        if (mPlayer != null) {
+            mPlayer.start();
+            isPlaying = true;
+            sendMusicNotification();
+            sendBroadcastChangeListener();
+        }
+    }
+
+    public void prevSong() {
+        int newPosition;
+        if (mListSongPlaying.size() > 1) {
+            if (isShuffle) {
+                newPosition = new Random().nextInt(mListSongPlaying.size());
+            } else {
+                if (isRepeat)
+                    newPosition = mSongPosition;
+                else if (mSongPosition > 0) {
+                    newPosition = mSongPosition - 1;
+                } else {
+                    newPosition = mListSongPlaying.size() - 1;
+                }
+            }
+        } else {
+            newPosition = 0;
+        }
+        mSongPosition = newPosition;
+        sendMusicNotification();
+        sendBroadcastChangeListener();
+        playSong();
+    }
+
+    private void nextSong() {
+        int newPosition;
+        if (mListSongPlaying.size() > 1) {
+            if (isShuffle) {
+                newPosition = new Random().nextInt(mListSongPlaying.size());
+            } else {
+                if (isRepeat)
+                    newPosition = mSongPosition;
+                else if (mSongPosition < mListSongPlaying.size() - 1) {
+                    newPosition = mSongPosition + 1;
+                } else {
+                    newPosition = 0;
+                }
+            }
+        } else {
+            newPosition = 0;
+        }
+        mSongPosition = newPosition;
+        sendMusicNotification();
+        sendBroadcastChangeListener();
+        playSong();
+    }
+
+    public void playMediaPlayer(String songUrl) {
+        try {
+            if (mPlayer.isPlaying()) {
+                mPlayer.stop();
+            }
+            mPlayer.reset();
+            mPlayer.setDataSource(songUrl);
+            mPlayer.prepareAsync();
+            initControl();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void initControl() {
+        mPlayer.setOnPreparedListener(this);
+        mPlayer.setOnCompletionListener(this);
+    }
+
+    private void sendMusicNotification() {
+        Song song = mListSongPlaying.get(mSongPosition);
+
+        int pendingFlag;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            pendingFlag = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;
+        } else {
+            pendingFlag = PendingIntent.FLAG_UPDATE_CURRENT;
+        }
+        Intent intent = new Intent(this, MainActivity.class);
+        @SuppressLint("UnspecifiedImmutableFlag")
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, pendingFlag);
+
+        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.layout_push_notification_music);
+        remoteViews.setTextViewText(R.id.tv_song_name, song.getTitle());
+
+        // Set listener
+        remoteViews.setOnClickPendingIntent(R.id.img_previous, GlobalFunction.openMusicReceiver(this, Constant.PREVIOUS));
+        remoteViews.setOnClickPendingIntent(R.id.img_next, GlobalFunction.openMusicReceiver(this, Constant.NEXT));
+        if (isPlaying) {
+            remoteViews.setImageViewResource(R.id.img_play, R.drawable.ic_pause_gray);
+            remoteViews.setOnClickPendingIntent(R.id.img_play, GlobalFunction.openMusicReceiver(this, Constant.PAUSE));
+        } else {
+            remoteViews.setImageViewResource(R.id.img_play, R.drawable.ic_play_gray);
+            remoteViews.setOnClickPendingIntent(R.id.img_play, GlobalFunction.openMusicReceiver(this, Constant.RESUME));
+        }
+        remoteViews.setOnClickPendingIntent(R.id.img_close, GlobalFunction.openMusicReceiver(this, Constant.CANNEL_NOTIFICATION));
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, MyApplication.CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_small_push_notification)
+                .setContentIntent(pendingIntent)
+                .setSound(null);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            builder.setCustomBigContentView(remoteViews);
+        } else {
+            builder.setCustomContentView(remoteViews);
+        }
+
+        Notification notification = builder.build();
+        startForeground(1, notification);
+    }
+
+    public static void clearListSongPlaying() {
+        if (mListSongPlaying != null) {
+            mListSongPlaying.clear();
+        } else {
+            mListSongPlaying = new ArrayList<>();
+        }
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        mAction = Constant.NEXT;
+        nextSong();
+    }
+
+    @Override
+    public void onPrepared(MediaPlayer mp) {
+        mLengthSong = mPlayer.getDuration();
+        mp.start();
+        isPlaying = true;
+        mAction = Constant.PLAY;
+        sendMusicNotification();
+        sendBroadcastChangeListener();
+        changeCountViewSong();
+    }
+
+    private void sendBroadcastChangeListener() {
+        Intent intent = new Intent(Constant.CHANGE_LISTENER);
+        intent.putExtra(Constant.MUSIC_ACTION, mAction);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+    }
+
+    private void changeCountViewSong() {
+        long songId = mListSongPlaying.get(mSongPosition).getId();
+        MyApplication.get(this).getCountViewDatabaseReference(songId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Integer currentCount = snapshot.getValue(Integer.class);
+                        if (currentCount != null) {
+                            int newCount = currentCount + 1;
+                            MyApplication.get(MusicService.this).getCountViewDatabaseReference(songId).removeEventListener(this);
+                            MyApplication.get(MusicService.this).getCountViewDatabaseReference(songId).setValue(newCount);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {}
+                });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mPlayer != null) {
+            mPlayer.release();
+            mPlayer = null;
+        }
+    }
+}
