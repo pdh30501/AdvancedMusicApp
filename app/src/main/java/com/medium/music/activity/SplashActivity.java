@@ -9,7 +9,6 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.medium.music.R;
 import com.medium.music.constant.AboutUsConfig;
 import com.medium.music.constant.GlobalFunction;
 import com.medium.music.databinding.ActivitySplashBinding;
@@ -25,6 +24,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mActivitySplashBinding = ActivitySplashBinding.inflate(getLayoutInflater());
@@ -35,7 +35,6 @@ public class SplashActivity extends AppCompatActivity {
         Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(this::goToNextActivity, 2000);
     }
-
 
     private void initUi() {
         mActivitySplashBinding.tvAboutUsTitle.setText(AboutUsConfig.ABOUT_US_TITLE);
