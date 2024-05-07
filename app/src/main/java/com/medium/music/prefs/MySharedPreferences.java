@@ -11,7 +11,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MyApplication extends Application {
+public class MySharedPreferences extends Application {
 
     // Firebase url
     public static final String FIREBASE_URL = "https://music-android-ae620-default-rtdb.asia-southeast1.firebasedatabase.app";
