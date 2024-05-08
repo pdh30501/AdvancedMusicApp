@@ -25,7 +25,6 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        android:enableOnBackInvokedCallback="true"
         tools:ignore="UnusedAttribute">
 
         <meta-data
@@ -47,10 +46,26 @@
         <activity
             android:exported="true"
             android:name=".activity.SplashActivity">
-
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Cấu hình App URI Scheme -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="musiscapp" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".zaloPay.ZaloPayActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -61,8 +76,8 @@
 
         <activity
             android:exported="false"
-            android:name=".activity.PlayMusicActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:name=".activity.PlayMusicActivity" />
+
         <activity
             android:name=".activity.SignUpActivity"
             android:exported="false"/>

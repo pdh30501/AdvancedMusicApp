@@ -39,6 +39,7 @@ import com.medium.music.model.User;
 import com.medium.music.prefs.DataStoreManager;
 import com.medium.music.service.MusicService;
 import com.medium.music.utils.GlideUtils;
+import com.medium.music.zaloPay.ZaloPayActivity;
 
 @SuppressLint("NonConstantResourceId")
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -112,6 +113,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mActivityMainBinding.header.imgLeft.setOnClickListener(this);
         mActivityMainBinding.header.layoutPlayAll.setOnClickListener(this);
 
+        mActivityMainBinding.menuLeft.premium.setOnClickListener(this);
+
         mActivityMainBinding.menuLeft.layoutClose.setOnClickListener(this);
         mActivityMainBinding.menuLeft.tvMenuHome.setOnClickListener(this);
         mActivityMainBinding.menuLeft.tvMenuAllSongs.setOnClickListener(this);
@@ -120,7 +123,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mActivityMainBinding.menuLeft.tvMenuNewSongs.setOnClickListener(this);
         mActivityMainBinding.menuLeft.tvMenuFavoriteSongs.setOnClickListener(this);
         mActivityMainBinding.menuLeft.tvMenuFeedback.setOnClickListener(this);
-        mActivityMainBinding.menuLeft.tvMenuContact.setOnClickListener(this);
+//        mActivityMainBinding.menuLeft.tvMenuContact.setOnClickListener(this);
         mActivityMainBinding.menuLeft.tvMenuChangePassword.setOnClickListener(this);
         mActivityMainBinding.menuLeft.tvMenuSignOut.setOnClickListener(this);
 
@@ -209,6 +212,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 mActivityMainBinding.drawerLayout.openDrawer(GravityCompat.START);
                 break;
 
+            case R.id.premium:
+                Intent intent = new Intent(getApplicationContext(), ZaloPayActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.tv_menu_home:
                 mActivityMainBinding.drawerLayout.closeDrawer(GravityCompat.START);
                 openHomeScreen();
@@ -250,10 +258,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 openFeedbackScreen();
                 break;
 
-            case R.id.tv_menu_contact:
-                mActivityMainBinding.drawerLayout.closeDrawer(GravityCompat.START);
-                openContactScreen();
-                break;
+//            case R.id.tv_menu_contact:
+//                mActivityMainBinding.drawerLayout.closeDrawer(GravityCompat.START);
+//                openContactScreen();
+//                break;
 
             case R.id.tv_menu_change_password:
                 mActivityMainBinding.drawerLayout.closeDrawer(GravityCompat.START);
