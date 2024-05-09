@@ -1,5 +1,7 @@
 package com.medium.music.activity;
 
+import static com.medium.music.constant.Constant.FIREBASE_URL;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -12,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
@@ -20,6 +23,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.medium.music.R;
 import com.medium.music.constant.Constant;
 import com.medium.music.constant.GlobalFunction;
@@ -35,6 +43,7 @@ import com.medium.music.fragment.FeedbackFragment;
 import com.medium.music.fragment.HomeFragment;
 import com.medium.music.fragment.NewSongsFragment;
 import com.medium.music.fragment.PopularSongsFragment;
+import com.medium.music.listener.PremiumUserListener;
 import com.medium.music.model.Song;
 import com.medium.music.model.User;
 import com.medium.music.prefs.DataStoreManager;
@@ -75,10 +84,53 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         checkNotificationPermission();
         LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver,
                 new IntentFilter(Constant.CHANGE_LISTENER));
+        checkPremium();
         initUi();
         openHomeScreen();
         initListener();
         displayLayoutBottom();
+    }
+
+    private void checkPremium() {
+        String email = DataStoreManager.getUser().getEmail();
+        User userObject = DataStoreManager.getUser();
+
+        // Kiểm tra người dùng Premium và cập nhật thuộc tính isPremium của userObject
+        checkPremiumUser(email, new PremiumUserListener() {
+            @Override
+            public void onPremiumUserChecked(boolean isPremium) {
+                userObject.setPremium(isPremium);
+
+                // cập nhật giao diện người dùng
+                Log.d("UserLogcat", "isPremium: " + isPremium);
+                if (isPremium) {
+                    mActivityMainBinding.menuLeft.premium.setVisibility(View.GONE);
+                    mActivityMainBinding.menuLeft.isPremium.setText(getString(R.string.is_premium));
+                } else {
+                    mActivityMainBinding.menuLeft.premium.setVisibility(View.VISIBLE); // Nếu không phải là premium, hiển thị
+                    mActivityMainBinding.menuLeft.isPremium.setText(getString(R.string.is_not_premium));
+                }
+            }
+        });
+    }
+    public void checkPremiumUser(String userEmail, PremiumUserListener listener) {
+        String userEmail_ = userEmail.replace(".", "_");
+        DatabaseReference premiumUsersRef = FirebaseDatabase.getInstance(FIREBASE_URL).getReference("premiumUsers")
+                .child(userEmail_);
+
+        premiumUsersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean isPremium = snapshot.exists();
+                // Gọi callback để trả về kết quả
+                listener.onPremiumUserChecked(isPremium);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Xử lý khi có lỗi xảy ra
+            }
+        });
     }
 
     private void checkNotificationPermission() {
@@ -92,16 +144,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initUi() {
-        boolean isPremium = DataStoreManager.getUser().isPremium();
-        Log.d("UserLogcat", "isPremium: " + isPremium);
         if (DataStoreManager.getUser().isAdmin()) {
             mActivityMainBinding.menuLeft.layoutListSong.setVisibility(View.GONE);
         } else {
             mActivityMainBinding.menuLeft.layoutListSong.setVisibility(View.VISIBLE);
-            if(DataStoreManager.getUser().isPremium()) {
-                mActivityMainBinding.menuLeft.premium.setVisibility(View.GONE);
-                mActivityMainBinding.menuLeft.isPremium.setText(getString(R.string.is_premium));
-            }
         }
         displayUserInformation();
     }

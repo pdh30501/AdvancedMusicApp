@@ -79,30 +79,17 @@ public class SignInActivity extends BaseActivity {
                             String password = "0";
                             User userObject = new User(email, password);
 
-                            // Kiểm tra người dùng Premium và cập nhật thông tin người dùng
-                            checkPremiumUser(email, new PremiumUserListener() {
-                                @Override
-                                public void onPremiumUserChecked(boolean isPremium) {
-                                    // Sau khi kiểm tra Premium hoàn thành, đặt thuộc tính isPremium của userObject
-                                    userObject.setPremium(isPremium);
-
-                                    // Kiểm tra xem người dùng có phải là admin không và cập nhật thông tin người dùng
-                                    if (email != null && email.contains(Constant.ADMIN_EMAIL_FORMAT)) {
-                                        userObject.setAdmin(true);
-                                    }
-
-                                    // Lưu thông tin người dùng vào DataStoreManager và chuyển hướng đến MainActivity
-                                    DataStoreManager.setUser(userObject);
-                                    GlobalFunction.startActivity(SignInActivity.this, MainActivity.class);
-                                    finishAffinity();
-                                }
-                            });
+                            if (email != null && email.contains(Constant.ADMIN_EMAIL_FORMAT)) {
+                                userObject.setAdmin(true);
+                            }
+                            DataStoreManager.setUser(userObject);
+                            GlobalFunction.startActivity(SignInActivity.this, MainActivity.class);
+                            finishAffinity();
                         }
                     } catch (ApiException e) {
                         e.printStackTrace();
                     }
                 });
-
 
         mActivitySignInBinding.btnSinginGoogle.setOnClickListener(view -> oneTapClient.beginSignIn(signInRequest)
                 .addOnSuccessListener(this, result -> {
@@ -169,24 +156,5 @@ public class SignInActivity extends BaseActivity {
                 });
     }
 
-    public void checkPremiumUser(String userEmail, PremiumUserListener listener) {
-        String userEmail_ = userEmail.replace(".", "_");
-        DatabaseReference premiumUsersRef = FirebaseDatabase.getInstance(FIREBASE_URL).getReference("premiumUsers")
-                .child(userEmail_);
-
-        premiumUsersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                boolean isPremium = snapshot.exists();
-                // Gọi callback để trả về kết quả
-                listener.onPremiumUserChecked(isPremium);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Xử lý khi có lỗi xảy ra
-            }
-        });
-    }
 
 }
