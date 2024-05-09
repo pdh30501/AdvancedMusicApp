@@ -76,7 +76,6 @@ public class AllSongsFragment extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Song song = dataSnapshot.getValue(Song.class);
                     if (song == null) {
-                        return;
                     }
                     mListSong.add(0, song);
                 }

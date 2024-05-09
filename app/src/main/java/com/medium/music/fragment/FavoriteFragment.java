@@ -77,7 +77,7 @@ public class FavoriteFragment extends Fragment {
                 resetListData();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Song song = dataSnapshot.getValue(Song.class);
-                    if (song == null) return;
+                    if (song == null);
                     if (GlobalFunction.isFavoriteSong(song)) {
                         mListSong.add(0, song);
                     }

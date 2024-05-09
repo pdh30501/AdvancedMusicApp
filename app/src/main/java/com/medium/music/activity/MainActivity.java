@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.app.ActivityCompat;
@@ -91,10 +92,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initUi() {
+        boolean isPremium = DataStoreManager.getUser().isPremium();
+        Log.d("UserLogcat", "isPremium: " + isPremium);
         if (DataStoreManager.getUser().isAdmin()) {
             mActivityMainBinding.menuLeft.layoutListSong.setVisibility(View.GONE);
         } else {
             mActivityMainBinding.menuLeft.layoutListSong.setVisibility(View.VISIBLE);
+            if(DataStoreManager.getUser().isPremium()) {
+                mActivityMainBinding.menuLeft.premium.setVisibility(View.GONE);
+                mActivityMainBinding.menuLeft.isPremium.setText(getString(R.string.is_premium));
+            }
         }
         displayUserInformation();
     }

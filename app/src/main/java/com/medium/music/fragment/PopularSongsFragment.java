@@ -77,7 +77,6 @@ public class PopularSongsFragment extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Song song = dataSnapshot.getValue(Song.class);
                     if (song == null) {
-                        return;
                     }
                     if (song.getCount() > 0) {
                         mListSong.add(song);

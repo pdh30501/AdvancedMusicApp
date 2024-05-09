@@ -2,33 +2,32 @@ package com.medium.music.activity;
 
 import static android.content.ContentValues.TAG;
 
-import android.content.Intent;
-import android.content.IntentSender;
+import static com.medium.music.constant.Constant.FIREBASE_URL;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.IntentSenderRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.medium.music.R;
 import com.medium.music.constant.Constant;
 import com.medium.music.constant.GlobalFunction;
 import com.medium.music.databinding.ActivitySignInBinding;
+import com.medium.music.listener.PremiumUserListener;
 import com.medium.music.model.User;
 import com.medium.music.prefs.DataStoreManager;
 import com.medium.music.utils.StringUtil;
@@ -76,21 +75,34 @@ public class SignInActivity extends BaseActivity {
                         String idToken = credential.getGoogleIdToken();
                         if (idToken != null) {
                             String email = credential.getId();
-                            String username = credential.getDisplayName();
 
                             String password = "0";
                             User userObject = new User(email, password);
-                            if (email != null && email.contains(Constant.ADMIN_EMAIL_FORMAT)) {
-                                userObject.setAdmin(true);
-                            }
-                            DataStoreManager.setUser(userObject);
-                            GlobalFunction.startActivity(SignInActivity.this, MainActivity.class);
-                            finishAffinity();
+
+                            // Kiểm tra người dùng Premium và cập nhật thông tin người dùng
+                            checkPremiumUser(email, new PremiumUserListener() {
+                                @Override
+                                public void onPremiumUserChecked(boolean isPremium) {
+                                    // Sau khi kiểm tra Premium hoàn thành, đặt thuộc tính isPremium của userObject
+                                    userObject.setPremium(isPremium);
+
+                                    // Kiểm tra xem người dùng có phải là admin không và cập nhật thông tin người dùng
+                                    if (email != null && email.contains(Constant.ADMIN_EMAIL_FORMAT)) {
+                                        userObject.setAdmin(true);
+                                    }
+
+                                    // Lưu thông tin người dùng vào DataStoreManager và chuyển hướng đến MainActivity
+                                    DataStoreManager.setUser(userObject);
+                                    GlobalFunction.startActivity(SignInActivity.this, MainActivity.class);
+                                    finishAffinity();
+                                }
+                            });
                         }
                     } catch (ApiException e) {
                         e.printStackTrace();
                     }
                 });
+
 
         mActivitySignInBinding.btnSinginGoogle.setOnClickListener(view -> oneTapClient.beginSignIn(signInRequest)
                 .addOnSuccessListener(this, result -> {
@@ -156,4 +168,25 @@ public class SignInActivity extends BaseActivity {
                     }
                 });
     }
+
+    public void checkPremiumUser(String userEmail, PremiumUserListener listener) {
+        String userEmail_ = userEmail.replace(".", "_");
+        DatabaseReference premiumUsersRef = FirebaseDatabase.getInstance(FIREBASE_URL).getReference("premiumUsers")
+                .child(userEmail_);
+
+        premiumUsersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean isPremium = snapshot.exists();
+                // Gọi callback để trả về kết quả
+                listener.onPremiumUserChecked(isPremium);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Xử lý khi có lỗi xảy ra
+            }
+        });
+    }
+
 }
