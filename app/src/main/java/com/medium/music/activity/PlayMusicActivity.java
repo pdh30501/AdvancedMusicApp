@@ -15,6 +15,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.medium.music.R;
 import com.medium.music.adapter.MusicViewPagerAdapter;
 import com.medium.music.databinding.ActivityPlayMusicBinding;
+import com.medium.music.prefs.DataStoreManager;
 
 public class PlayMusicActivity extends BaseActivity {
 
@@ -31,25 +32,29 @@ public class PlayMusicActivity extends BaseActivity {
         initToolbar();
         initUI();
 
-        AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        mInterstitialAd = interstitialAd;
-                        if (mInterstitialAd != null) {
-                            mInterstitialAd.show(PlayMusicActivity.this);
-                        } else {
-                            Log.d(TAG, "The interstitial ad wasn't ready yet.");
+        if(DataStoreManager.getUser().isPremium()) {
+            // load ads
+            AdRequest adRequest = new AdRequest.Builder().build();
+            InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest,
+                    new InterstitialAdLoadCallback() {
+                        @Override
+                        public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                            mInterstitialAd = interstitialAd;
+                            if (mInterstitialAd != null) {
+                                mInterstitialAd.show(PlayMusicActivity.this);
+                            } else {
+                                Log.d(TAG, "The interstitial ad wasn't ready yet.");
+                            }
+                            setFullScreenContentCallback();
                         }
-                        setFullScreenContentCallback();
-                    }
 
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        mInterstitialAd = null;
-                    }
-                });
+                        @Override
+                        public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                            mInterstitialAd = null;
+                        }
+                    });
+        }
+
     }
 
     private void setFullScreenContentCallback() {
