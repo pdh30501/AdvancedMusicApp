@@ -84,7 +84,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         checkNotificationPermission();
         LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver,
                 new IntentFilter(Constant.CHANGE_LISTENER));
-        checkPremium();
         initUi();
         openHomeScreen();
         initListener();
@@ -95,19 +94,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         String email = DataStoreManager.getUser().getEmail();
         User userObject = DataStoreManager.getUser();
 
-        // Kiểm tra người dùng Premium và cập nhật thuộc tính isPremium của userObject
         checkPremiumUser(email, new PremiumUserListener() {
             @Override
             public void onPremiumUserChecked(boolean isPremium) {
                 userObject.setPremium(isPremium);
+                DataStoreManager.setUser(userObject);
 
-                // cập nhật giao diện người dùng
-                Log.d("UserLogcat", "isPremium: " + isPremium);
                 if (isPremium) {
                     mActivityMainBinding.menuLeft.premium.setVisibility(View.GONE);
                     mActivityMainBinding.menuLeft.isPremium.setText(getString(R.string.is_premium));
                 } else {
-                    mActivityMainBinding.menuLeft.premium.setVisibility(View.VISIBLE); // Nếu không phải là premium, hiển thị
+                    mActivityMainBinding.menuLeft.premium.setVisibility(View.VISIBLE);
                     mActivityMainBinding.menuLeft.isPremium.setText(getString(R.string.is_not_premium));
                 }
             }
@@ -146,8 +143,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void initUi() {
         if (DataStoreManager.getUser().isAdmin()) {
             mActivityMainBinding.menuLeft.layoutListSong.setVisibility(View.GONE);
+            mActivityMainBinding.menuLeft.isPremium.setVisibility(View.GONE);
+            mActivityMainBinding.menuLeft.premium.setVisibility(View.GONE);
         } else {
             mActivityMainBinding.menuLeft.layoutListSong.setVisibility(View.VISIBLE);
+            checkPremium();
         }
         displayUserInformation();
     }

@@ -32,7 +32,9 @@ public class PlayMusicActivity extends BaseActivity {
         initToolbar();
         initUI();
 
-        if(DataStoreManager.getUser().isPremium()) {
+        boolean isPremium = DataStoreManager.getUser().isPremium();
+        Log.d(TAG, "isPremium: " + isPremium);
+        if(!isPremium) {
             // load ads
             AdRequest adRequest = new AdRequest.Builder().build();
             InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest,
