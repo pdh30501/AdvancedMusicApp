@@ -49,7 +49,7 @@ public class SignInActivity extends BaseActivity {
         mActivitySignInBinding = ActivitySignInBinding.inflate(getLayoutInflater());
         setContentView(mActivitySignInBinding.getRoot());
 
-        mActivitySignInBinding.rdbUser.setChecked(true);
+        mActivitySignInBinding.rdbAdmin.setChecked(true);
 
         mActivitySignInBinding.layoutSignUp.setOnClickListener(
                 v -> GlobalFunction.startActivity(SignInActivity.this, SignUpActivity.class));

@@ -19,6 +19,20 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions "userType"
+    productFlavors {
+        admin {
+            dimension "userType"
+            applicationId "com.medium.admin"
+            // Các cài đặt khác cho ứng dụng admin
+        }
+        user {
+            dimension "userType"
+            applicationId "com.medium.user"
+            // Các cài đặt khác cho ứng dụng user
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
