@@ -451,9 +451,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         showConfirmExitApp();
     }
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
-//    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
+    }
 }
