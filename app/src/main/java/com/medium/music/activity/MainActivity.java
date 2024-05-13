@@ -446,10 +446,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         return mActivityMainBinding;
     }
 
-    @Override
-    public void onBackPressed() {
-        showConfirmExitApp();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        showConfirmExitApp();
+//    }
 
     @Override
     protected void onDestroy() {
