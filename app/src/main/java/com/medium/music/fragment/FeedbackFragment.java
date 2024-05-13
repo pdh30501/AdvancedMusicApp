@@ -22,17 +22,17 @@ public class FeedbackFragment extends Fragment {
 
     private FragmentFeedbackBinding mFragmentFeedbackBinding;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        mFragmentFeedbackBinding = FragmentFeedbackBinding.inflate(inflater, container, false);
-
-        mFragmentFeedbackBinding.edtEmail.setText(DataStoreManager.getUser().getEmail());
-        mFragmentFeedbackBinding.tvSendFeedback.setOnClickListener(v -> onClickSendFeedback());
-
-        return mFragmentFeedbackBinding.getRoot();
-    }
+//    @Nullable
+//    @Override
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+//                             @Nullable Bundle savedInstanceState) {
+//        mFragmentFeedbackBinding = FragmentFeedbackBinding.inflate(inflater, container, false);
+//
+//        mFragmentFeedbackBinding.edtEmail.setText(DataStoreManager.getUser().getEmail());
+//        mFragmentFeedbackBinding.tvSendFeedback.setOnClickListener(v -> onClickSendFeedback());
+//
+//        return mFragmentFeedbackBinding.getRoot();
+//    }
 
     private void onClickSendFeedback() {
         if (getActivity() == null) {
