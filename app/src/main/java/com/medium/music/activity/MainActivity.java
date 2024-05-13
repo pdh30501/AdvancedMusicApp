@@ -1,5 +1,7 @@
 package com.medium.music.activity;
 
+import static com.medium.music.constant.Constant.FIREBASE_URL;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -9,8 +11,10 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
@@ -19,6 +23,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.medium.music.R;
 import com.medium.music.constant.Constant;
 import com.medium.music.constant.GlobalFunction;
@@ -34,6 +43,7 @@ import com.medium.music.fragment.FeedbackFragment;
 import com.medium.music.fragment.HomeFragment;
 import com.medium.music.fragment.NewSongsFragment;
 import com.medium.music.fragment.PopularSongsFragment;
+import com.medium.music.listener.PremiumUserListener;
 import com.medium.music.model.Song;
 import com.medium.music.model.User;
 import com.medium.music.prefs.DataStoreManager;
@@ -80,6 +90,46 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         displayLayoutBottom();
     }
 
+    private void checkPremium() {
+        String email = DataStoreManager.getUser().getEmail();
+        User userObject = DataStoreManager.getUser();
+
+        checkPremiumUser(email, new PremiumUserListener() {
+            @Override
+            public void onPremiumUserChecked(boolean isPremium) {
+                userObject.setPremium(isPremium);
+                DataStoreManager.setUser(userObject);
+
+                if (isPremium) {
+                    mActivityMainBinding.menuLeft.premium.setVisibility(View.GONE);
+                    mActivityMainBinding.menuLeft.isPremium.setText(getString(R.string.is_premium));
+                } else {
+                    mActivityMainBinding.menuLeft.premium.setVisibility(View.VISIBLE);
+                    mActivityMainBinding.menuLeft.isPremium.setText(getString(R.string.is_not_premium));
+                }
+            }
+        });
+    }
+    public void checkPremiumUser(String userEmail, PremiumUserListener listener) {
+        String userEmail_ = userEmail.replace(".", "_");
+        DatabaseReference premiumUsersRef = FirebaseDatabase.getInstance(FIREBASE_URL).getReference("premiumUsers")
+                .child(userEmail_);
+
+        premiumUsersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean isPremium = snapshot.exists();
+                // Gọi callback để trả về kết quả
+                listener.onPremiumUserChecked(isPremium);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Xử lý khi có lỗi xảy ra
+            }
+        });
+    }
+
     private void checkNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ActivityCompat.checkSelfPermission(this,
@@ -93,8 +143,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void initUi() {
         if (DataStoreManager.getUser().isAdmin()) {
             mActivityMainBinding.menuLeft.layoutListSong.setVisibility(View.GONE);
+            mActivityMainBinding.menuLeft.isPremium.setVisibility(View.GONE);
+            mActivityMainBinding.menuLeft.premium.setVisibility(View.GONE);
         } else {
             mActivityMainBinding.menuLeft.layoutListSong.setVisibility(View.VISIBLE);
+            checkPremium();
         }
         displayUserInformation();
     }

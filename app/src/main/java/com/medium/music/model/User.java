@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 public class User {
     private String email;
     private String password;
+    private boolean isPremium;
     private boolean isAdmin;
 
     public User() {
@@ -29,6 +30,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isPremium() {
+        return isPremium;
+    }
+
+    public void setPremium(boolean premium) {
+        isPremium = premium;
     }
 
     public boolean isAdmin() {

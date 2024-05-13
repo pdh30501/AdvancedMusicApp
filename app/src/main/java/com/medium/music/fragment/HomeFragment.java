@@ -130,7 +130,6 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Song song = dataSnapshot.getValue(Song.class);
                     if (song == null) {
-                        return;
                     }
 
                     if (StringUtil.isEmpty(key)) {

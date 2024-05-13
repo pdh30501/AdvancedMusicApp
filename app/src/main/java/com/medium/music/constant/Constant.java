@@ -6,6 +6,9 @@ public class Constant {
     public static final String MAC_KEY = "8NdU5pG5R2spGHGhyO99HN1OhD8IQJBn";
     public static final String URL_CREATE_ORDER = "https://sandbox.zalopay.com.vn/v001/tpe/createorder";
 
+    // Firebase url
+    public static final String FIREBASE_URL = "https://music-android-ae620-default-rtdb.asia-southeast1.firebasedatabase.app";
+
 
     // Max count
     public static final int MAX_COUNT_BANNER = 5;

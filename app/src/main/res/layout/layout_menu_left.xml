@@ -30,27 +30,6 @@
                 android:src="@drawable/ic_avatar_default"/>
 
             <TextView
-                android:id="@+id/premium"
-                android:layout_width="85dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/define_dimen_5"
-                android:text="Premium"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_normal"
-                android:textStyle="bold" />
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_menu_buy_premium"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:padding="@dimen/define_dimen_14"-->
-<!--                android:text="@string/menu_buy_premium"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:drawableLeft="@drawable/ic_menu_buy_premium"-->
-<!--                android:drawablePadding="@dimen/define_dimen_10"-->
-<!--                android:textSize="@dimen/text_size_normal" />-->
-
-            <TextView
                 android:id="@+id/tv_user_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,6 +38,16 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:id="@+id/is_premium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_5"
+                android:text="@string/is_not_premium"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -193,6 +182,19 @@
                     android:drawableLeft="@drawable/ic_menu_sign_out"
                     android:drawablePadding="@dimen/define_dimen_10"
                     android:textSize="@dimen/text_size_normal" />
+
+                <TextView
+                    android:id="@+id/premium"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp"
+                    android:drawableLeft="@drawable/ad_block"
+                    android:drawablePadding="@dimen/define_dimen_10"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/define_dimen_14"
+                    android:text="Pay to remove ads"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_normal" />
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
