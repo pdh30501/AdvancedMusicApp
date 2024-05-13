@@ -61,11 +61,11 @@ public class FeedbackFragment extends Fragment {
         }
     }
 
-    public void sendFeedbackSuccess() {
-        GlobalFunction.hideSoftKeyboard(getActivity());
-        GlobalFunction.showToastMessage(getActivity(), getString(R.string.msg_send_feedback_success));
-        mFragmentFeedbackBinding.edtName.setText("");
-        mFragmentFeedbackBinding.edtPhone.setText("");
-        mFragmentFeedbackBinding.edtComment.setText("");
-    }
+//    public void sendFeedbackSuccess() {
+//        GlobalFunction.hideSoftKeyboard(getActivity());
+//        GlobalFunction.showToastMessage(getActivity(), getString(R.string.msg_send_feedback_success));
+//        mFragmentFeedbackBinding.edtName.setText("");
+//        mFragmentFeedbackBinding.edtPhone.setText("");
+//        mFragmentFeedbackBinding.edtComment.setText("");
+//    }
 }
