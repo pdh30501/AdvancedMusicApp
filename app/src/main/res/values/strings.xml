@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Music App</string>
     <string name="web_client_id">176952488912-4anh54vvcfls2l5c5lliojgq1is4ija6.apps.googleusercontent.com </string>
+    <string name="is_premium">Premium</string>
+    <string name="is_not_premium">Free Account</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_all_songs">All Songs</string>

@@ -7,6 +7,7 @@ import android.content.Intent;
 import com.medium.music.constant.Constant;
 import com.medium.music.constant.GlobalFunction;
 
+
 public class MusicReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {

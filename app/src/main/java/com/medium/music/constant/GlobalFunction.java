@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 
 import com.medium.music.MyApplication;
+import com.medium.music.activity.MainActivity;
 import com.medium.music.model.Song;
 import com.medium.music.model.UserInfor;
 import com.medium.music.prefs.DataStoreManager;

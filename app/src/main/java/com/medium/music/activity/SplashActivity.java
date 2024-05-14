@@ -19,7 +19,7 @@ import com.medium.music.utils.StringUtil;
 public class SplashActivity extends AppCompatActivity {
 
     private ActivitySplashBinding mActivitySplashBinding;
-
+    // onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +40,7 @@ public class SplashActivity extends AppCompatActivity {
 //        mActivitySplashBinding.tvAboutUsTitle.setText(AboutUsConfig.ABOUT_US_TITLE);
 //        mActivitySplashBinding.tvAboutUsSlogan.setText(AboutUsConfig.ABOUT_US_SLOGAN);
     }
+
 
     private void goToNextActivity() {
         if (DataStoreManager.getUser() != null && !StringUtil.isEmpty(DataStoreManager.getUser().getEmail())) {

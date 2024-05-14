@@ -33,3 +33,4 @@ public class Contact {
         this.image = image;
     }
 }
+

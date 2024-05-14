@@ -76,7 +76,6 @@ public class NewSongsFragment extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Song song = dataSnapshot.getValue(Song.class);
                     if (song == null) {
-                        return;
                     }
                     if (song.isLatest()) {
                         mListSong.add(0, song);

@@ -1,5 +1,7 @@
 package com.medium.music;
 
+import static com.medium.music.constant.Constant.FIREBASE_URL;
+
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -12,10 +14,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MyApplication extends Application {
-
-
-    // Firebase url
-    public static final String FIREBASE_URL = "https://music-android-ae620-default-rtdb.asia-southeast1.firebasedatabase.app";
 
     public static final String CHANNEL_ID = "channel_music_basic_id";
     private static final String CHANNEL_NAME = "channel_music_basic_name";

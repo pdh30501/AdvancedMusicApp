@@ -20,7 +20,7 @@
         android:fitsSystemWindows="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Music App Admin"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
@@ -57,7 +57,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="musiscapp" />
+                <data android:scheme="musiccapp"
+                    android:host="app"/>
             </intent-filter>
         </activity>
 
