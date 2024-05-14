@@ -6,3 +6,6 @@ public interface IOnClickSongItemListener {
     void onClickItemSong(Song song);
     void onClickFavoriteSong(Song song, boolean favorite);
 }
+//public interface Icon{
+//
+//}
