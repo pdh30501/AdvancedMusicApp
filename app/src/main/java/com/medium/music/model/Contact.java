@@ -32,9 +32,5 @@ public class Contact {
     public void setImage(int image) {
         this.image = image;
     }
-
-////    public void setImages(int image) {
-//        this.image = image;
-//    }
 }
 
