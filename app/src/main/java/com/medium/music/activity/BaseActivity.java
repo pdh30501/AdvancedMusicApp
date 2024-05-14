@@ -62,6 +62,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+//    public void showAlertDialog(String errorMessage) {
+//        alertDialog.setContent(errorMessage);
+//        alertDialog.show();
+//    }
+
     public void showAlertDialog(@StringRes int resourceId) {
         alertDialog.setContent(resourceId);
         alertDialog.show();
