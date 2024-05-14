@@ -28,7 +28,7 @@ android {
         }
         user {
             dimension "userType"
-            applicationId "com.medium.user"
+            applicationId "com.medium.music"
             // Các cài đặt khác cho ứng dụng user
         }
     }
