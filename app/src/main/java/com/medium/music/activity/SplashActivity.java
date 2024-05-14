@@ -41,6 +41,14 @@ public class SplashActivity extends AppCompatActivity {
 //        mActivitySplashBinding.tvAboutUsSlogan.setText(AboutUsConfig.ABOUT_US_SLOGAN);
     }
 
+//    private void goToNextActivity() {
+//        if (DataStoreManager.getUser() != null && !StringUtil.isEmpty(DataStoreManager.getUser().getEmail())) {
+//            GlobalFunction.startActivity(this, MainActivity.class);
+//        } else {
+//            GlobalFunction.startActivity(this, SignInActivity.class);
+//        }
+//        finish();
+//    }
     private void goToNextActivity() {
         if (DataStoreManager.getUser() != null && !StringUtil.isEmpty(DataStoreManager.getUser().getEmail())) {
             GlobalFunction.startActivity(this, MainActivity.class);
