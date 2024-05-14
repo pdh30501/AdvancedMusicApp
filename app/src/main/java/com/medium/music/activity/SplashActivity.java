@@ -19,7 +19,7 @@ import com.medium.music.utils.StringUtil;
 public class SplashActivity extends AppCompatActivity {
 
     private ActivitySplashBinding mActivitySplashBinding;
-
+    // onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
