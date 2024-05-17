@@ -11,7 +11,6 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -36,7 +35,6 @@ import com.medium.music.fragment.AdminFeedbackFragment;
 import com.medium.music.fragment.AdminHomeFragment;
 import com.medium.music.fragment.AllSongsFragment;
 import com.medium.music.fragment.ChangePasswordFragment;
-import com.medium.music.fragment.ContactFragment;
 import com.medium.music.fragment.FavoriteFragment;
 import com.medium.music.fragment.FeaturedSongsFragment;
 import com.medium.music.fragment.FeedbackFragment;
@@ -228,13 +226,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
         mTypeScreen = TYPE_FEEDBACK;
         initToolbar(getString(R.string.menu_feedback));
-        displayLayoutPlayAll();
-    }
-
-    private void openContactScreen() {
-        replaceFragment(new ContactFragment());
-        mTypeScreen = TYPE_CONTACT;
-        initToolbar(getString(R.string.menu_contact));
         displayLayoutPlayAll();
     }
 
