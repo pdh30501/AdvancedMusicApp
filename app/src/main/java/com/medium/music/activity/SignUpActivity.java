@@ -38,7 +38,7 @@ public class SignUpActivity extends BaseActivity {
         } else if (!StringUtil.isValidEmail(strEmail)) {
             Toast.makeText(SignUpActivity.this, getString(R.string.msg_email_invalid), Toast.LENGTH_SHORT).show();
         } else {
-            if (mActivitySignUpBinding.check.getText() == "admin") {
+            if (mActivitySignUpBinding.check.getText().toString().equals("admin")) {
                 if (!strEmail.contains(Constant.ADMIN_EMAIL_FORMAT)) {
                     Toast.makeText(SignUpActivity.this, getString(R.string.msg_email_invalid_admin), Toast.LENGTH_SHORT).show();
                 } else {

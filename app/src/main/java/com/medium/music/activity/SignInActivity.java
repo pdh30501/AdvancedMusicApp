@@ -113,7 +113,8 @@ public class SignInActivity extends BaseActivity {
         } else if (!StringUtil.isValidEmail(strEmail)) {
             Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid), Toast.LENGTH_SHORT).show();
         } else {
-            if (mActivitySignInBinding.check.getText() == "admin") {
+//            Log.d("SignInCheckAdmin", mActivitySignInBinding.check.getText().toString());
+            if (mActivitySignInBinding.check.getText().toString().equals("admin")) {
                 if (!strEmail.contains(Constant.ADMIN_EMAIL_FORMAT)) {
                     Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid_admin), Toast.LENGTH_SHORT).show();
                 } else {
